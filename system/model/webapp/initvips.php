@@ -1,0 +1,61 @@
+<?php 
+    if(!defined('CW')){exit('Access Denied');}
+    functions::is_ajax();
+    $db = functions::db();
+    $db->query("truncate table vipcard");
+    $db->exec('vipcard','i',array(
+    	'stit'=>'小体验',
+    	'btit'=>'青铜体验卡',
+    	'oldprice'=>50,
+    	'nowprice'=>30,
+    	'descs'=>'新特惠/送10钻石+7天VIP',
+    	'adddiam'=>10,
+    	'days'=>7
+    ));
+    $db->exec('vipcard','i',array(
+    	'stit'=>'浪一回',
+    	'btit'=>'闪耀钻石卡',
+    	'oldprice'=>100,
+    	'nowprice'=>50,
+    	'descs'=>'赠送20钻石+14天VIP',
+    	'adddiam'=>20,
+    	'days'=>14
+    ));
+    $db->exec('vipcard','i',array(
+    	'stit'=>'聚划算',
+    	'btit'=>'完美铂金卡',
+    	'oldprice'=>150,
+    	'nowprice'=>100,
+    	'descs'=>'赠送30钻石+30天VIP',
+    	'adddiam'=>30,
+    	'days'=>30
+    ));
+    $db->exec('vipcard','i',array(
+    	'stit'=>'乐享尊贵',
+    	'btit'=>'至尊逍遥卡',
+    	'oldprice'=>230,
+    	'nowprice'=>200,
+    	'descs'=>'送50钻石+365天VIP',
+    	'adddiam'=>50,
+    	'days'=>365
+    ));
+    $db->exec('vipcard','i',array(
+    	'stit'=>'商家专属',
+    	'btit'=>'商家专用',
+    	'oldprice'=>5000,
+    	'nowprice'=>3000,
+    	'descs'=>'广告商家专用',
+    	'adddiam'=>1000,
+    	'days'=>1000
+    ));
+    $db->exec('vipcard','i',array(
+    	'stit'=>'24小时,萌新专享',
+    	'btit'=>'萌新福利卡',
+    	'oldprice'=>150,
+    	'nowprice'=>100,
+    	'descs'=>'限时抢购, 机不可失',
+    	'adddiam'=>0,
+    	'days'=>30
+    ));
+    msg('初始化完毕!','刷新','javascript:location.reload()','success',true);
+?>

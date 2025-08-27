@@ -1,0 +1,72 @@
+<?php 
+    if(!defined('CW')){exit('Access Denied');}
+    functions::is_ajax();
+    $db = functions::db();
+    $db->query("truncate table diamcard");
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>500,
+    	'give'=>288,
+    	'price'=>500,
+    	'descs'=>'赠送288钻石',
+        'tag'=>'',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>388,
+    	'give'=>168,
+    	'price'=>388,
+    	'descs'=>'赠送138钻石',
+        'tag'=>'',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>200,
+    	'give'=>50,
+    	'price'=>200,
+    	'descs'=>'赠送50钻石',
+        'tag'=>'至尊',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>150,
+    	'give'=>35,
+    	'price'=>120,
+    	'descs'=>'赠送35钻石',
+        'tag'=>'大赚',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>100,
+    	'give'=>30,
+    	'price'=>100,
+    	'descs'=>'赠送30钻石',
+        'tag'=>'',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>80,
+    	'give'=>20,
+    	'price'=>75,
+    	'descs'=>'赠送20钻石',
+        'tag'=>'聚划算',
+    ));
+    
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>50,
+    	'give'=>10,
+    	'price'=>50,
+    	'descs'=>'赠送10钻石',
+        'tag'=>'小赚',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>30,
+    	'give'=>5,
+    	'price'=>28,
+    	'descs'=>'赠送5钻石',
+        'tag'=>'尝尝鲜',
+    ));
+    $db->exec('diamcard','i',array(
+    	'diamnum'=>15,
+    	'give'=>2,
+    	'price'=>15,
+    	'descs'=>'赠送2钻石',
+        'tag'=>'小体验',
+    ));
+    
+    msg('初始化完毕!','刷新','javascript:location.reload()','success',true);
+?>

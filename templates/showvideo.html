@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta name="referrer" content="never">
+    <title></title>
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/flv.min.js"></script>
+    <script src="{G:JS}/hls.min.js"></script>
+    <script src="{G:JS}/DPlayer.min.js"></script>
+    <style>
+        body,html,div{
+            padding:0;margin:0;
+        }
+        #dplayer{
+            width:100%;height:240px;
+        }
+        /*.dplayer-full-icon,.dplayer-full{*/
+        /*    display: none !important;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div id="dplayer"></div>
+    <script>
+ 	    var dplayer = document.getElementById('dplayer');
+        if(dplayer){
+           var player = new DPlayer({
+                container: dplayer,
+                video: {
+                    url: '{videourl}',
+                    pic:'{videocover}',
+                    type: 'auto',
+                }
+            });
+            var videoTime=0
+            player.on('timeupdate',function (e){
+            //   var videoCurrentTime=player.video.currentTime;
+            //   if(videoCurrentTime-videoTime>0.5){
+            //     player.seek(videoTime);
+            //     player.notice('禁止快进 ,下载APP可以快进',2000)
+            //   }
+            //   videoTime=videoCurrentTime;
+            })
+            player.on('notice_show',function (e){
+              var text=$(e).text()
+              if('禁止快进'!=text&&(text.indexOf("快进")>-1||text.indexOf("快退")>-1)){
+                $(e).hide()
+              }
+            })
+        }</script>
+</body>
+</html>
+

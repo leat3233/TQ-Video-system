@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <link rel="stylesheet" href="{G:CSS}/time.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <script src="{G:JS}/time.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                	<p class="title">用户信息</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                			<tr>
+                				<td>用户昵称</td>
+                				<td><p><input name="nickname" value="{nickname}" placeholder="不超过18个字符(6个字)" /></p></td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>电话</td>-->
+                			<!--	<td><input name="tel" value="{tel}" placeholder="用户绑定的电话号码" /></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>邀请码</td>
+                				<td><input readonly="readonly" name="card" value="{card}" placeholder="邀请码" /></td>
+                			</tr>
+                		
+                			<tr>
+                				<td>金币</td>
+                				<td><input name="diam" value="{diam}" placeholder="金币数" /></td>
+                			</tr>
+                			<input type="hidden" name="tel" value="{tel}" />
+                			<tr>
+                				<td>钱包</td>
+                				<td><input name="money" value="{money}" placeholder="用户拥有的金额" /></td>
+                			</tr>
+                			<tr>
+                				<td>VIP到期时间</td>
+                				<td><input id="time" name="viptime" value="{viptime}" placeholder="VIP到期时间" /></td>
+                			</tr>
+                			<tr>
+                				<td>性别</td>
+                				<td class="rel">
+                					<input readonly="true" value="{sex}" class="pub_select" name="sex" placeholder="点击选择性别" />
+                					<ul class="abs hide">
+                					    <li>男</li>
+                					    <li>女</li>
+                					</ul>
+                				</td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>交易密码</td>-->
+                			<!--	<td><input name="withdrawalspass" value="{withdrawalspass}" placeholder="交易密码" /></td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>锁屏密码</td>-->
+                			<!--	<td><input name="lockpass" value="{lockpass}" placeholder="锁屏密码" /></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>个性签名</td>
+                				<td><input name="descs" value="{descs}" placeholder="不得超过255个字符" /></td>
+                			</tr>
+                			<tr>
+                				<td>连续签到天数</td>
+                				<td><input name="days" value="{days}" placeholder="" /></td>
+                			</tr>
+                			
+                			<!--<tr>-->
+                			<!--	<td>是否冻结</td>-->
+                			<!--	<td class="rel">-->
+                			<!--		<input readonly="true" value="{freeze}" class="pub_select" name="freeze" placeholder="点击选择状态" />-->
+                			<!--		<ul class="abs hide">-->
+                			<!--		    <li>冻结</li>-->
+                			<!--		    <li>正常</li>-->
+                			<!--		</ul>-->
+                			<!--	</td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>星标</td>-->
+                			<!--	<td class="rel">-->
+                			<!--		<input  value="{mylevel}"  name="mylevel" placeholder="多个星标用英文(,)隔开, 最多填写2个星标, 例如 1,2" />-->
+                			<!--		<div class="xb">-->
+                			<!--		    <p>1. <img src='{G:IMG}/vip_level_1.png' /></p>-->
+                			<!--		    <p>2. <img src='{G:IMG}/vip_level_2.png' /></p>-->
+                			<!--		    <p>3. <img src='{G:IMG}/vip_level_3.png' /></p>-->
+                			<!--		    <p>4. <img src='{G:IMG}/vip_level_4.png' /></p>-->
+                			<!--		    <p>5. <img src='{G:IMG}/vip_level_5.png' /></p>-->
+                			<!--		</div>-->
+                				
+                			<!--		<div class="xb">注意: 星标12345 只能出现一个, 否则将引起业务类显示错误</div>-->
+                			<!--	</td>-->
+                			<!--</tr>-->
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var opts1={
+            'targetId':'time',//时间写入对象的id
+            'hms':'on',
+            'format':'-',
+            'min':'2021-08-30 00:00:00',
+            'max':'2099-10-30 00:00:00'
+        };
+
+    xvDate(opts1);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">搜索条件</p>
+                    <div class="frmtable">
+                        <form action="admin.php" method="get" class="search">
+                            <input type="hidden" name="mod" value="selldiamlist" />
+                            <input name="keyword" value="{CW('get/keyword')==='0' ? '' : CW('get/keyword')}" placeholder="搜索标题,支持模糊检索" />
+                            
+                            <button type="submit" class="btn btn1"><i class="fa fa-search"></i>搜索</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="frame">
+                    <p class="title">VIP会员卡销售管理</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <th>用户</th>
+                            <th>会员卡类型</th>
+                            <th>价格</th>
+                            <th>购买时间</th>
+                            <th>操作</th>
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    <div class="fr pat30">
+                        {page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

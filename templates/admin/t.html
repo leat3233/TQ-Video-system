@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+  
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+ 
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                	<p class="title">用户信息</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                		    <tr>
+                				<td>ID</td>
+                				<td>{tel}</td>
+                			</tr>
+                			<tr>
+                				<td>用户昵称</td>
+                				<td><p><input name="nickname" value="{nickname}" placeholder="不超过18个字符(6个字)" /></p></td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>电话</td>-->
+                			<!--	<td><input name="tel" value="{tel}" placeholder="用户绑定的电话号码" /></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>身高</td>
+                				<td><input  name="shengao" value="{shengao}" placeholder="身高" /></td>
+                			</tr>
+                			<tr>
+                				<td>职业</td>
+                				<td><input name="zhiye" value="{zhiye}" placeholder="职业" /></td>
+                			</tr>
+                			<tr>
+                				<td>体重</td>
+                				<td><input name="tizhong" value="{tizhong}" placeholder="体重" /></td>
+                			</tr>
+                		    <tr>
+                				<td>城市</td>
+                				<td><input name="city" value="{city}" placeholder="城市" /></td>
+                			</tr>
+                			<tr>
+                				<td>年龄</td>
+                				<td><input name="nianling" value="{nianling}" placeholder="年龄" /></td>
+                			</tr>
+                			
+                			<tr>
+                				<td>微信号</td>
+                				<td><input name="wx" value="{wx}" placeholder="微信号" /></td>
+                			</tr>
+                			
+                			<tr>
+                				<td>性别</td>
+                				<td class="rel">
+                					<input readonly="true" value="{xingbie}" class="pub_select" name="xingbie" placeholder="点击选择性别" />
+                					<ul class="abs hide">
+                					    <li>男</li>
+                					    <li>女</li>
+                					</ul>
+                				</td>
+                			</tr>
+                		    <tr>
+                				<td>图片列表</td>
+                				<td>
+                				    <div class="row flex-wrap">{imglist}</div>
+                				</td>
+                			</tr>
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .row {
+		display: flex;
+		flex-direction: row;
+	}
+	.flex-wrap {
+		flex-wrap: wrap;
+	}
+    </style>
+</body>
+</html>

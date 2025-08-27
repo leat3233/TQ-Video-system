@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>短信系统设置</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+        .frmtable_content td.r input{
+            margin-bottom:5px;width:10%
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">短信设置</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                    <p class="p1 btn3">温馨提示</p>
+		                    <p class="pub"><a class="alw" target="_blank" href="https://user.ihuyi.com/new/sms/overview">点击前往互亿无线</a> <a target="_blank" class="aly" href="https://user.ihuyi.com/new/sms/guide">如何修改短信签名?=>1.7 短信签名</a></p>
+		               </div>
+		            </div>
+                	<p class="title">短信 - 互亿无线</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+                			<tr>
+                				<td>apiId</td>
+                				<td><input value="{apiid}" name="apiid" placeholder="APIID"></td>
+                			</tr>
+                			<tr>
+                				<td>apiKey</td>
+                				<td><input value="{apikey}" name="apikey" placeholder="APIKEY"></td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="updatemessage"><i class="fa fa-edit"></i>保存</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

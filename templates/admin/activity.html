@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>活动</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <link rel="stylesheet" href="{G:CSS}/time.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <script src="{G:JS}/time.js"></script>
+    <link rel="stylesheet" href="{G:PLUGINS}/themes/default/default.css" />
+	<link rel="stylesheet" href="{G:PLUGINS}/plugins/code/prettify.css" />
+	<script charset="utf-8" src="{G:PLUGINS}/kindeditor-all.js"></script>
+	<script charset="utf-8" src="{G:PLUGINS}/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="{G:PLUGINS}/plugins/code/prettify.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea', {
+				cssPath : '{G:PLUGINS}/plugins/code/prettify.css',
+				uploadJson : '{G:PLUGINS}/php/upload_json.php',
+				fileManagerJson : '{G:PLUGINS}/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+				    this.sync();
+				},
+				afterBlur:function(){
+				    this.sync();
+				}
+			});
+			prettyPrint();
+		});
+        $(function(){
+            $("select[name=select]").find("option[value='{click}']").attr("selected",true);
+		    $("select[name=content4]").find("option[value='{content4}']").attr("selected",true);
+            $('.select').change(function(data){
+                var value = $(".select option:selected").attr("value");
+                $('.selectdiv div.mt20').addClass('hide');
+                if(value=='noselect'){
+                    return;
+                }else if(value=='跳出APP到浏览器'){
+                    $('.div1').removeClass('hide');
+                }else if(value=='本APP内打开外链'){
+                    $('.div2').removeClass('hide');
+                }else if(value=='跳到APP内某个帖子'){
+                    $('.div3').removeClass('hide');
+                }else if(value=='跳到APP功能项'){
+                    $('.div4').removeClass('hide');
+                }else if(value=='跳到APP专题页'){
+                    $('.div5').removeClass('hide');
+                }
+                
+            });
+            
+        });
+    </script>
+    <style>
+        .search input{
+            width: 70%;
+        }
+        .ke-container{
+            width: 75% !important;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                	<p class="title">活动添加</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                			<tr>
+                				<td>活动标题</td>
+                				<td><p><input name="title" value="{title}" placeholder="不超过90个字符(30个字)" /></p></td>
+                			</tr>
+
+                			<tr>
+                				<td>活动封面</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="activitycover" value="{activitycover}">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+            			    <tr>
+                				<td>活动时间</td>
+                				<td><input id="time1" name="time1" onclick="laydate({istime: true,format:'YYYY-MM-DD hh:mm'})" class="w30 marb10" value="{time1}" placeholder="开始时间">
+                				<input id="time2" class="w30 marb10" onclick="laydate({istime: true,format:'YYYY-MM-DD hh:mm'})" name="time2" value="{time2}" placeholder="结束时间"><br>
+                			</tr>
+                		    <tr>
+                				<td>广告点击效果</td>
+                				<td class="search selectdiv">
+                				    <select name="select" class="select">
+                				        <option value="跳出APP到浏览器">跳出APP到浏览器</option>
+                                        
+                                    </select>
+                                    <div class=" mt20 div1"><input name="content1" value="{content1}" placeholder="请输入链接" /></div>
+                                <!--    <div class="hide mt20 div2"><input name="content2" value="{content2}" placeholder="请输入链接" /></div>-->
+                                <!--    <div class="hide mt20 div3"><input name="content3" value="{content3}" placeholder="请输入帖子ID,可前往视频管理页面查看" /></div>-->
+                                <!--    <div class="hide mt20 div4">-->
+                                <!--        <select name="content4">-->
+                                <!--            <option value="0">--请选择功能项--</option>-->
+                    				        <!--<option value="VIP会员充值">VIP会员充值</option>-->
+                                <!--            <option value="钻石充值">钻石充值</option>-->
+                                <!--            <option value="兑换中心">兑换中心</option>-->
+                                <!--            <option value="客服中心">客服中心</option>-->
+                                <!--            <option value="我的收益">我的收益</option>-->
+                                <!--            <option value="钻石兑换现金">钻石兑换现金</option>-->
+                                <!--            <option value="提现">提现</option>-->
+                                <!--            <option value="商家入驻">商家入驻</option>-->
+                                <!--            <option value="如何赚钱">如何赚钱</option>-->
+                                <!--            <option value="分享推广">分享推广</option>-->
+                                <!--            <option value="应用推广中心">应用推广中心</option>-->
+                                <!--            <option value="发布页面">发布页面</option>-->
+                                <!--            <option value="设置">设置</option>-->
+                                <!--            <option value="关注与粉丝">关注与粉丝</option>-->
+                                <!--            <option value="我的邀请">我的邀请</option>-->
+                                <!--            <option value="充值记录">充值记录</option>-->
+                                <!--            <option value="发布管理">发布管理</option>-->
+                                <!--        </select>-->
+                                <!--    </div>-->
+                                    <div class="hide mt20 div5">
+                                        <textarea name="content5" placeholder="">{content5}</textarea>
+                                    </div>
+                                </td>
+                			</tr>
+                			
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var opts1={
+            'targetId':'time1',//时间写入对象的id
+            'hms':'on',
+            'format':'-',
+            'min':'2021-06-09 10:00:00',
+            'max':'2099-10-30 10:00:00'
+        };
+        var opts2={
+            'targetId':'time2',//时间写入对象的id
+            'hms':'on',
+            'format':'-',
+            'min':'2021-06-09 10:00:00',
+            'max':'2099-10-30 10:00:00'
+        };
+
+    xvDate(opts1);
+    xvDate(opts2);
+    var select = '{click}'; 
+    if(select=='跳出APP到浏览器'){
+        $('.div1').removeClass('hide');
+    }else if(select=='本APP内打开外链'){
+        $('.div2').removeClass('hide');
+    }else if(select=='跳到APP内某个帖子'){
+        $('.div3').removeClass('hide');
+    }else if(select=='跳到APP功能项'){
+        $('.div4').removeClass('hide');
+    }else if(select=='跳到APP专题页'){
+        $('.div5').removeClass('hide');
+    }
+    
+</script>
+</body>
+</html>

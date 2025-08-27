@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="{G:CSS}/upload.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <script type="text/javascript" src="{G:JS}/webuploader.js"></script>
+    <script type="text/javascript" src="{G:JS}/md5.js"></script>
+    <script type="text/javascript" src="{G:JS}/upload2.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">提示</p>
+                    <div class="notice" style="opacity:1;color:#333">
+		                <div class="note-info">
+		                    <p class="p1 btn3">温馨提示</p>
+		                    <p class="pub">1. 如果 普通用户金币价格 和 VIP用户金币价格 都填写0代表本影片免费</p>
+		                    <p class="pub">2. 如果 普通用户金币价格>0  VIP用户金币价格=0 代表本影片是VIP用户专属,免费</p>
+		                    <p class="pub">3. 如果 普通用户金币价格>VIP用户金币价格 且都不可为0 代表本影片是高质量影片都将根据设置收取相应的金币费用</p>
+		                     <p class="pub" style="color:red;font-weight:bold">先上传视频再上传封面,会自动获取部分数据</p>
+		                </div>
+		            </div>
+                	<p class="title">视频添加</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                		    <tr>
+                                <td></td>
+                                <td>
+                                    <div class="row height-center">
+                                        <div  class="chosevideo column y part1" style="margin-right:20px">
+                                            <div class="column  flex-center" style="background:#65cea7;width:100px;height:100px;border-radius: 15px;">
+                                                <img src="{G:IMG}/uuu.png" style="height:35px" />
+                                                <p style="font-size: 14px;font-weight: bold;color: #fff;">短视频上传</p>
+                                            </div>
+                                        </div>
+                                        <div  class="chosevideo column y part2" >
+                                            <div class="column  flex-center" style="background:#65cea7;width:100px;height:100px;border-radius: 15px;">
+                                                <img src="{G:IMG}/uuu.png" style="height:35px" />
+                                                <p style="font-size: 14px;font-weight: bold;color: #fff;">封面上传</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="divFileProgressContainer"></div> 
+                                </td>
+                            </tr>
+                		    <tr>
+                				<td>用户名</td>
+                				<td><p><input name="tel" value="{tel}" placeholder="填写用户id" /></p></td>
+                			</tr>
+                			<tr>
+                				<td>短视频标题</td>
+                				<td><p><input name="title" id="title" value="{title}" placeholder="不超过60个字符(20个字)" /></p></td>
+                			</tr>
+                            
+                			<tr>
+                				<td>短视频封面</td>
+                				<td class="upload">
+                				    <input placeholder="请选择图片"  mode="upload" class="coverurl" name="shortvidcover" value="{shortvidcover}">
+                				    <!--<form class="test" method="post" enctype="multipart/form-data">-->
+                        <!--        		<p>-->
+                        <!--        			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>-->
+                        <!--        		</p><input placeholder="请选择图片" class="css" mode="upload" name="shortvidcover" value="{shortvidcover}">-->
+                        <!--        		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>-->
+                        <!--    		</form>-->
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>视频地址</td>
+                				<td class="upload">
+                				    <input placeholder="请选择图片"  mode="upload" id="odownpath1"  name="shortvidurl" value="{shortvidurl}">
+                				    <!--<form class="test" method="post" enctype="multipart/form-data">-->
+                        <!--        		<p>-->
+                        <!--        			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>-->
+                        <!--        		</p><input placeholder="请选择图片" class="css" mode="upload" name="shortvidurl" value="{shortvidurl}">-->
+                        <!--        		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>-->
+                        <!--    		</form>-->
+                				</td>
+                				
+                			</tr>
+                			<tr>
+                				<td>普通用户金币价格(需大于VIP用户专属价格)</td>
+                				<td><input name="diamond" value="{diamond}" placeholder="单位:金币 填写0代表免费" /></td>
+                			</tr>
+                			<tr>
+                				<td>VIP用户专属价格</td>
+                				<td><input name="vipdiam" value="{vipdiam}" placeholder="单位:金币 填写0并且普通用户金币价格不为0的情况下 代表VIP用户免费" /></td>
+                			</tr>
+                			<tr>
+                				<td>喜欢(人数)</td>
+                				<td><input name="likes" value="{likes}" placeholder="系统自动计算, 可不填" /></td>
+                			</tr>
+                			<tr>
+                				<td>分类</td>
+                				<td class="rel">
+                					<input  value="{topic}" class="topic_select" name="topic" placeholder="点击选择话题" />
+                					<ul class="abs hide">
+                					    {data}
+                					</ul>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>发布状态</td>
+                				<td class="rel">
+                					<input readonly="true" value="{ishow}" class="pub_select" name="ishow" placeholder="点击选择状态" />
+                					<ul class="abs hide">
+                					    <li>公开</li>
+                					    <li>审核</li>
+                					</ul>
+                				</td>
+                			</tr>
+                			
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var isover = false;
+        var hostname = window.location.hostname
+        var port = window.location.port || '80';
+        var ServerUrl = "http://18.163.141.205:2000/uploads";
+        
+        $(function(){
+            uploader.on('all', function (type) {
+                console.log(type);
+                if (type === 'startUpload') {
+                    state = 'started';
+                    //$('#chosevideo').remove();
+                    console.log("开始上传了~");
+                } else if (type === 'stopUpload') {
+                    state = 'stoped';
+                    console.log("开始暂停了~");
+                } else if (type === 'uploadFinished') {
+                    state = 'finished';
+                    isover = true;
+                    if($('.coverurl').val()){
+                        $('.part2 input,.part2 label').remove();
+                    }
+                    if($('#odownpath1').val()){
+                        $('.part1 input,.part1 label').remove();
+                    }
+                    
+                    console.log("开始结束了~");
+                }
+            });
+        });
+    </script>
+    <style>
+    .frmtable_content select {
+    transition: box-shadow .4s ease-in-out;
+    color: #888;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cccccc;
+    width: 20%;
+    padding: 10px 10px;
+    border-radius: 4px;
+}
+.percent_str{
+    color:#6bc5a4 !important;
+}
+.progressName {
+    font-size: 14px;
+    margin: 10px 0px;
+    color:#6bc5a4 !important;font-weight: bold;
+}
+.time_name,.progressBarStatus li,.time_left,.uploaded_speed{
+    color:#6bc5a4 !important;font-weight: bold;
+}
+.ishowhide{
+    display: none;
+}
+.progressBarInProgress{
+    background: #6bc5a4 !important;
+}
+        .webuploader-element-invisible{
+            opacity: 0;
+        }
+        .flex-center{
+            align-items: center;justify-content: center;
+        }
+          .height-center {
+		align-items: center;
+	}
+    
+	.width-center {
+		justify-content: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+    .column{
+        display: flex;
+		flex-direction: column;
+    }
+	.between {
+		justify-content: space-between;
+	}
+    </style>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">搜索条件</p>
+                    <div class="frmtable">
+                        <form action="admin.php" method="get" class="search">
+                            <input type="hidden" name="mod" value="clicklist" />
+                            <input name="keyword" value="{CW('get/keyword')==='0' ? '' : CW('get/keyword')}" placeholder="填写代理商ID" />
+                            
+                            <button type="submit" class="btn btn1"><i class="fa fa-search"></i>搜索</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="frame">
+                    <p class="title">广告点击数据概览</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <th>代理商</th>
+                            <th>首页-推荐/占比</th>
+                            <th>首页-话题/占比</th>
+                            <th>会员-会员/占比</th>
+                            <th>会员-金币/占比</th>
+                            <th>会员-片库/占比</th>
+                            <th>糖圈推荐/占比</th>
+                            <th>应用中心/占比</th>
+                            <th>播放页/占比</th>
+                            <th>广告总点击率/总点击数占比</th>
+                            
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    <div class="w100 fr pat30">
+                        {page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .c{
+            color: #3FCF7F !important;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .b{
+            color: red !important;
+            font-weight: bold;
+            font-size: 14px;
+          
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+        .search input{
+            width: 70%;
+        }
+        .ke-container{
+            width: 75% !important;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">开屏广告设置</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                			<tr>
+                				<td>开屏广告图(全屏图)</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="openadvimg" value="{openadvimg}">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>广告备注</td>
+                				<td><p><input name="openadvremarks" value="{openadvremarks}" placeholder="" /></p></td>
+                			</tr>
+                			<tr>
+                				<td>广告目标连接</td>
+                				<td><p><input name="openadvurl" value="{openadvurl}" placeholder="" /></p></td>
+                			</tr>
+                			<tr>
+                				<td>开屏广告开启状态</td>
+                				<td class="rel">
+                					<input readonly="true" value="{openadvishow}" class="pub_select" name="openadvishow" placeholder="点击选择状态">
+                					<ul class="abs hide">
+                					    <li>开启</li>
+                					    <li>关闭</li>
+                					</ul>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td><a href="javascript:;" class="btn submit" rel="updatopenadv"><i class="fa fa-edit"></i>更新</a></td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

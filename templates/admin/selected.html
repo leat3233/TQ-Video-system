@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">APP首页-精选添加</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody><tr>
+                				<td>影片ID</td>
+                				<td><input name="vid" placeholder=""></td>
+                			</tr>
+                			<tr>
+                				<td>推荐指数</td>
+                				<td class="search">
+                				    <select name="star1">
+                                        <option value="4">4星</option>
+                                        <option value="4.5">4.5星</option>
+                                        <option value="5" selected>5星</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>推荐指数</td>
+                				<td class="search">
+                				    <select name="star2">
+                                        <option value="4">4星</option>
+                                        <option value="4.5">4.5星</option>
+                                        <option value="5" selected>5星</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="addselected"><i class="fa fa-plus-square-o"></i>添加</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

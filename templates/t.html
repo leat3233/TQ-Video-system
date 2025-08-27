@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <meta name="referrer" content="never"/>
+
+    <title>分享</title>
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/copy.js"></script>
+    <!--<script src="https://app.bilibili.com/x/resource/ip" type="text/javascript"></script>-->
+    <style>
+     body{
+         padding:0;margin:0;
+     }
+     .flex-wrap {
+		flex-wrap: wrap;
+	}
+	
+	.height-center {
+		align-items: center;
+	}
+	
+	.width-center {
+		justify-content: center;
+	}
+	
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.column {
+		display: flex;
+		flex-direction: column;
+	}
+   .section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background:#fff}
+    .down {
+    font-size: 2.6vh;
+    height: 6.75vh;
+    width: 60.1vw;
+    color: rgb(255,52,162);
+    background-color: #FAD500;
+    border-radius: 10vh;margin-bottom:50px;
+    border: 2px solid #000;
+    display: flex;color:#000;
+    justify-content: center;
+    align-items: center;
+}
+.btn-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        position: absolute;
+    flex-direction: column;
+    bottom: 3vh;
+    z-index: 99;
+    width: 100%;
+}
+.logo {
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
+}
+.logo img{
+    width:100px;height:100px;border-radius: 7px;
+}
+.content {
+    position: absolute;
+    bottom: 24.6vh;
+    width: 100%;
+    text-align: center;
+}
+.content img {
+    width: 92.8%;
+}
+.notice{
+       
+    color: #ffffff;
+    font-size: 2.2vh;
+}
+.section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background: url({G:IMG}/bgg.jpg) center 100%/cover;}
+    
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="logo">
+        <img src="{G:INDEX}/index.php?mod=qrcode&url={qrcode}">
+        </div>
+        <div class="btn-list">
+            <div class="down download column">
+                <div style="font-weight:bold">立即下载</div>
+                <div style="font-size:11px;color:red;font-weight:bold">如果弹出剪切板权限,请允许</div>
+            </div>
+            
+        </div>
+          <div class="content">
+        <img src="{G:IMG}/img1.png">
+    </div>
+    </section>
+    <p class="card" style="display:none">{card}</p>
+    <script>
+    var id = 1;
+    var clipboard = new Clipboard('.download', {
+        text: function() {
+            return $('.card').text();
+        }
+    });
+    clipboard.on('success',
+    function(e) {
+        var u = navigator.userAgent;
+              var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+              if(isiOS){
+                let onlocal = window.open('', ' _blank');
+                onlocal.location = "{oo3}";
+              }else{
+                  window.open("{oo2}");
+              }
+    });
+    </script>
+</body>
+</html>
+

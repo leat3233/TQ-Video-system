@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/daili.js"></script>
+</head>
+<body>
+     <header>
+    <div class="fl">
+        <a href=""><img src="{G:IMG}/bklogo.png" /></a>
+    </div>
+    <div class="fr mart11">
+        
+    	<a href="{G:INDEX}/uplivepopo.php?mod=login" class=" btn btn4"><i class="fa fa-sign-out"></i> 退出</a>
+    </div>
+    <div class="clear"></div>
+</header>
+    {template:model:daili:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:daili:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">提示</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                    <p class="p1 btn3">重要信息</p>
+		                    <p class="pub">1. 我的分成比例: {lvs}</p>
+		                    <p class="pub">2. 我的推广链接: {url}</p>
+		                   
+		                </div>
+		            </div>
+                	<p class="title">视频添加</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                		    <tr>
+                				<td>代理用户名</td>
+                				<td><p><input name="tel" value="{tel}" placeholder=""  /></p></td>
+                			</tr>
+                			<tr>
+                				<td>该用户分成比例 (写法：填写80代表80%)</td>
+                				<td><p><input name="lv" value="{lv}" placeholder="" /></p></td>
+                			</tr>
+                			<input type="hidden" name="father" value="{father}" />
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

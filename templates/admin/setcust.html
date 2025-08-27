@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+        .category_input{
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">教程</p>
+                    <div class="frmtable">
+                    	
+			            <div class="notice">
+			                <div class="note-info">
+			                    <p class="p1 btn3">操作方法</p>
+			                    <p class="pub">1. 本页面设置的问答将会在app内部客服中心显示,由用户自主选择性的点击,然后将对应的答案展示给用户,具体请对照app设置.</p>
+			                    <p class="pub">2. 问答最后会由系统自动加上"在线客服"的选项,点击后将会跳到"美恰"聊天界面,如果需要关闭,请到 APP内部设置-我的-系统设置 里关闭.</p>
+			                    <p class="pub">3. <a style="color:red" href="https://app.meiqia.com/chat" target="_blank">去美洽后台</a></p>
+			                </div>
+			            </div>
+			            
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">问答设置</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody><tr>
+                				<td>问</td>
+                				<td><input name="q" placeholder="问题不宜过长, 设置后请参考app具体显示"></td>
+                			</tr>
+                			<tr>
+                				<td>答</td>
+                				<td><input name="a" placeholder="最多85字, 设置后请参考app具体显示"></td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="addqa"><i class="fa fa-plus-square-o"></i>添加</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="frame">
+                    <p class="title">问答管理</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        {data}
+                    </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

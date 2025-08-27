@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/daili.js"></script>
+    <script src="{G:JS}/copy.js"></script>
+    <style>
+        .frmtable2,.frmtable3 {
+            border-radius: 7px;
+        }
+        .ttitle{
+            background-image: linear-gradient( 10deg, #ABDCFF 10%, #0396FF 100%) !important;
+            text-shadow: 0 1px 0 #888;
+            color: #fff;
+            padding: 12px 10px;
+            font-size: 14px;border-radius: 4px;
+        }
+       ul.tags li{
+           transition: all 0.3s ease-in-out;width:24%;
+           border-radius: 14px;-webkit-box-shadow: 0 1px 3px rgba(33,33,33,.2);
+       }
+       ul.tags .details .des,ul.tags .details .num{
+           font-weight: bold;
+       }
+       ul.tags li.l1{
+           background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%) !important;
+       } 
+       ul.tags li.l2{
+           background-image: linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%) !important;
+       }
+       ul.tags li.l3{
+           background-image: linear-gradient( 135deg, #FFD3A5 10%, #FD6585 100%) !important;
+       }
+       ul.tags li.l4{
+           background-image: linear-gradient( 135deg, #EE9AE5 10%, #5961F9 100%) !important;
+       }
+       .row{
+           display: flex;
+           flex-direction: row;
+       }
+       .column{
+           display: flex;
+           flex-direction:column;
+       }
+       .width-center{
+           justify-content: center;
+       }
+       .height-center{
+           align-items: center;
+       }
+       .between{
+           justify-content: space-between;
+       }
+       .around{
+           justify-content: space-around;
+       }
+       .avatar{
+           width:40px;height: 40px;border-radius: 50%;object-fit: cover;margin-right: 10px;
+       }
+       table{
+           border-top: 1px solid #ddd;
+       }
+       td{
+           text-align: center;font-size:14px;padding:10px 0;border-right: 1px solid #fff;
+       }
+       .flex-center{
+           justify-content: center;align-items: center;
+       }
+       table tr:nth-child(even){
+           background-color: rgba(0, 0, 0, 0.03);
+       }
+       .mt30{
+           margin-top:30px;
+       }
+       .stitle{
+             margin-bottom: 10px;
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            padding-left: 20px;
+            padding-top: 15px;
+            line-height: 30px;
+            color: #676767;
+            font-weight: 400;
+            display: inline-block;
+       }
+       .nickname{
+           color:#505458;
+       }
+       .dtinme{
+           color: #999999;font-size:12px;
+       }
+       .color{
+            position: absolute;top:0;left:-40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            transform: translateY(-50%);
+       }
+       .color1{
+           background-image: linear-gradient(-12deg,#2a57d7 0,#9eeeff 100%) !important;
+       }
+       .color2{
+               background-image: linear-gradient(-12deg,#F88691 0, #FCD3BB 100%) !important;
+       }
+       .color3{
+           background-image: linear-gradient(126deg,#7bead0 0,#4BC39D 100%) !important;
+       }
+       .color4{
+           background-image: linear-gradient(126deg,#b960e0 0,#a890f5 100%) !important;
+       }
+       .color5{
+           background-image: linear-gradient(to right bottom, #e8962e, #e45131) !important;
+       }
+       .wrap-width{
+           width:100%;
+       }
+       .wrap-width .frmtable{
+           height:600px;
+       }
+       .frmtable3{
+           width: 90%;
+            padding: 23px 5%;
+            height: 145px;
+            box-shadow: 0 1px 5px 0px #ccc;
+            background: #fff;   
+       }
+       .wrap-width .frmtable2{
+            width: 40%;
+            padding: 23px;
+            height: 145px;
+            box-shadow: 0 1px 5px 0px #ccc;
+       }
+       .p1{
+           color: #969696;font-size:14px;
+       }
+        .p2{
+           color: #505458;;font-size:30px;font-weight: bold;margin:15px 0;
+       }
+        .p3{
+           color: rgba(118, 118, 118, 1.0);font-size:14px;
+       }
+        .p4{
+            color: #19d895;font-size:14px;
+       }
+       .p5{
+            color: red;font-size:14px;
+       }
+       .line{
+           width: 100%;height:1px;background: #eee;margin-top:20px;
+       }
+       .badge-success{
+            background-color: #19d895;
+            font-size: 18px;
+            color: #ffffff;
+            border-radius: 7px;
+            padding: 3px 3px;
+            margin-left: 10px;
+       }
+       .badge-danger{
+           background-color: red;
+            font-size: 18px;
+            color: #ffffff;
+            border-radius: 7px;
+            padding: 3px 3px;
+            margin-left: 10px;
+       }
+       .charts {
+          width: 100%;margin-top:30px;
+          height: 360px;
+        }
+        .l1{
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .l2{
+            font-size: 12px;
+            color: #505458;margin-top:7px;
+        }
+        .l3{
+            color: #ab8ce4 !important;
+            font-size:23px;
+            font-weight: bold;
+        }
+        .l4{
+            font-size: 14px;
+            color: #777;margin-top:7px;
+        }
+        .l5{
+            font-size: 14px;
+            color: #777;margin-top:7px;
+        }
+        .l6{
+            font-size: 14px;
+            color: #777;margin-top:7px;
+        }
+        .l7{
+            font-size: 14px;
+            color: #777;margin-top:7px;
+        }
+        .l8{
+            font-size: 14px;
+            color: #777;margin-top:7px;
+        }
+        .sys{
+           border-bottom:1px solid #eee; 
+        }
+        .sys tr td{
+            text-align: left;border-top:1px solid #eee;
+            border-left:1px solid #eee;border-right:1px solid #eee;
+            padding:10px;
+        }
+        .sys tr td:nth-child(odd){
+           font-weight: bold;
+        }
+        .aa tr td{
+            padding:10px 0 !important;padding: 10px 0 !important;
+    height: 12px;
+    max-width: 180px;
+        }
+        .te{
+            color: #fff;
+            background: #3FCF7F;
+            padding: 10px 32px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .pay1{
+            background: #24d2b5 !important;color:#fff;font-size:14px;    width: 75%;
+    margin: 0 auto;
+    border-radius: 100px;
+    padding: 5px 0;
+        }
+        .pay2{
+               background: #ff5c6c !important;color:#fff;font-size:14px;    width: 75%;
+    margin: 0 auto;
+    border-radius: 100px;
+    padding: 5px 0;
+        }
+        .l8{
+            color: #FD7D8C;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .l9{
+            color: #FD7D8C;
+            font-size:23px;
+            font-weight: bold;
+        }
+        .pad{
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+        .aaa{
+            margin-top:15px;
+        }
+        .aaa a{
+           background: #FD7D8C;
+            color: #fff;
+            font-size: 14px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: 7px;
+            padding: 5px 15px;
+        }
+        .frmtable3{
+            height:168px !important;
+        }
+        .copy{
+            background: #65cea7;
+            padding: 7px 30px;
+            width: 100px;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .copy:active {
+    opacity: 0.8;
+    transition: all .2s;
+}
+    </style>
+</head>
+<body>
+    <header>
+    <div class="fl">
+        <a href=""><img src="{G:IMG}/bklogo.png" /></a>
+    </div>
+    <div class="fr mart11">
+        
+    	<a href="{G:INDEX}/uplivepopo.php?mod=login" class=" btn btn4"><i class="fa fa-sign-out"></i> 退出</a>
+    </div>
+    <div class="clear"></div>
+</header>
+    {template:model:daili:aside}
+    <div class="wrap">
+        <div class="w100">
+          
+            <div class="content" style="margin-top:0">
+                <div class="row between">
+                    <div class="frame  w100">
+                       <div class="frmtable column">
+                           <p class="title">推广信息:</p>
+                           <p style="margin-top:20px;font-size:14px;font-weight:bold">我的推广链接: {tgurl}</p>
+                           <p class="copy">复制推广链接</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame mt30">
+                    <div class="frmtable column">
+			            <ul class="tags">
+                            <li class="m l1">
+                                <i class="fa fa-comments-o f"></i>
+                                <div class="details abs">
+                                    <div class="num"> {num1} </div>
+                                    <div class="des"> 总邀请量 </div>
+                                </div>
+                                <p class="abs w100"></p>
+                            </li>
+                            <li class="m l2">
+                                <i class="fa fa-bar-chart f"></i>
+                                <div class="details abs">
+                                    <div class="num"> {num2} </div>
+                                    <div class="des"> 今日新增量 </div>
+                                </div>
+                                <p class="abs w100"></p>
+                            </li>
+                            <li class="m l3">
+                                <i class="fa fa-pagelines f"></i>
+                                <div class="details abs">
+                                    <div class="num"> {num3} </div>
+                                    <div class="des"> 代理用户总充值额 </div>
+                                </div>
+                                <p class="abs w100"></p>
+                            </li>
+                           
+                        </ul>
+                        <ul class="tags">
+                            <li class="m l1">
+                                <i class="fa fa-comments-o f"></i>
+                                <div class="details abs">
+                                    <div class="num"> {num4} </div>
+                                    <div class="des"> 代理用户今日充值额 </div>
+                                </div>
+                                <p class="abs w100"></p>
+                            </li>
+                            <!--<li class="m l2">-->
+                            <!--    <i class="fa fa-bar-chart f"></i>-->
+                            <!--    <div class="details abs">-->
+                            <!--        <div class="num"> {num5} </div>-->
+                            <!--        <div class="des"> VIP总量 </div>-->
+                            <!--    </div>-->
+                            <!--    <p class="abs w100"></p>-->
+                            <!--</li>-->
+                         
+                        
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        var clipboard = new Clipboard('.copy', {
+        text: function() {
+            return "{tgurl}";
+        }
+    });
+    clipboard.on('success',
+    function(e) {
+        alert("邀请链接复制成功");
+    });
+    </script>
+
+</body>
+</html>

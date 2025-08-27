@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <meta name="referrer" content="never"/>
+
+    <title>分享</title>
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/copy.js"></script>
+    <!--<script src="https://app.bilibili.com/x/resource/ip" type="text/javascript"></script>-->
+    <style>
+     body{
+         padding:0;margin:0;
+     }
+   .section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background: url({G:IMG}/img1.jpg) no-repeat 100%/cover;}
+    .down {
+    font-size: 2.6vh;
+    height: 6.75vh;
+    width: 60.1vw;
+    color: rgb(255,52,162);
+    background-color: #fff;
+    border-radius: 10vh;
+    border: 0.6vw solid rgb(255,52,162);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        position: absolute;
+    flex-direction: column;
+    bottom: 3vh;
+    z-index: 99;
+    width: 100%;
+}
+.logo {
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
+}
+.logo img{
+    width:100px;height:100px;border-radius: 7px;
+}
+.content {
+    position: absolute;
+    bottom: 24.6vh;
+    width: 100%;
+    text-align: center;
+}
+.content img {
+    width: 92.8%;
+}
+.notice{
+       
+    color: #ffffff;
+    font-size: 2.2vh;
+}
+    </style>
+</head>
+<body>
+    <section class="section">
+        
+        <div class="btn-list">
+            <a class="down download">立即下载</a>
+            <p class="notice">如果弹出剪切板权限,请允许</p>
+        </div>
+        <div class="content">
+        <img src="{G:IMG}/img1.png">
+    </div>
+    </section>
+    <p class="card" style="display:none">{card}</p>
+    <script>
+    // $.ajax({
+    //   type: 'GET',
+    //   url: "https://app.bilibili.com/x/resource/ip",
+    //   contentType: 'application/json',
+    //   dataType:'jsonp',
+    //   responseType:'application/json',
+    //   xhrFields: {
+    //     withCredentials: false
+    //   },
+    //   headers: {
+    //     'Access-Control-Allow-Credentials' : true,
+    //     'Access-Control-Allow-Origin':'*',
+    //     'Access-Control-Allow-Methods':'GET',
+    //     'Access-Control-Allow-Headers':'application/json',
+    //   },
+    //   success: function(data) {
+    //     console.log(data);
+    //   },
+    //   error: function(error) {
+    //     console.log(error);
+    //   }
+    // });
+    var id = 1;
+    var clipboard = new Clipboard('.download', {
+        text: function() {
+            return $('.card').text();
+        }
+    });
+    clipboard.on('success',
+    function(e) {
+        $.ajax({
+    		type: "post",
+    		url: "{G:INDEX}/appajax.php?mod=getshare",
+    		dataType: 'html',
+    		data: "card="+$('.card').text(),
+    		success: function(data){
+    		  var u = navigator.userAgent;
+              var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+              if(isiOS){
+                let onlocal = window.open('', ' _blank');
+                onlocal.location = "{oo3}";
+              }else{
+                  window.open("{oo2}");
+              }
+    		    
+            },
+    		
+       })
+    });
+    </script>
+</body>
+</html>
+

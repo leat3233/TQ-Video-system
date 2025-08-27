@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">数据统计</p>
+                    <div class="frmtable">
+                       <div class="row around">
+                           <div class="row width-center">
+                               <p>今日本广告位点击量:</p><p>{num0}</p>
+                           </div>
+                           <div class="row width-center">
+                               <p>昨日(一天前)本广告位点击量:</p><p>{num1}</p>
+                           </div>
+                           <div class="row width-center">
+                               <p>前天(两天前)本广告位点击量:</p><p>{num2}</p>
+                           </div>
+                           <div class="row width-center">
+                               <p>三天前本广告位点击量:</p><p>{num3}</p>
+                           </div>
+                       </div>
+                       <div class="row around width-center" style="margin-top:30px">
+                           <div class="row width-center">
+                               <p>四天前本广告位点击量:</p><p>{num4}</p>
+                           </div>
+                           <div class="row width-center">
+                               <p>五天前本广告位点击量:</p><p>{num5}</p>
+                           </div>
+                           <div class="row width-center">
+                               <p>六天前本广告位点击量:</p><p>{num6}</p>
+                           </div>
+                           <div class="row width-center"></div>
+                           <!--<div class="row width-center">-->
+                           <!--    <p>本广告位总点击量:</p><p>{num5}</p>-->
+                           <!--</div>-->
+                          
+                       </div>
+                       <div class="row around width-center" style="margin-top:30px">
+                           <div class="row width-center">
+                               <p>本广告位总点击量:</p><p>{all}</p>
+                           </div>
+                           <div class="row width-center"></div>
+                           <div class="row width-center"></div>
+                           <div class="row width-center"></div>
+                           
+                          
+                       </div>
+                    </div>
+                    
+                </div>
+                <div class="frame">
+                    <p class="title">搜索条件</p>
+                    <div class="frmtable">
+                        <form action="admin.php" method="get" class="search">
+                            <input type="hidden" name="mod" value="click" />
+                            <input name="keyword" value="{CW('get/keyword')==='0' ? '' : CW('get/keyword')}" placeholder="点击用户的ID" />
+                            <input type="hidden" name="daili" value="{CW('get/daili')}" />
+                            <input type="hidden" name="type" value="{CW('get/type')}" />
+                            <button type="submit" class="btn btn1"><i class="fa fa-search"></i>搜索</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="frame">
+                    <p class="title">广告点击数据概览</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <th>广告位置</th>
+                            <th>点击用户</th>
+                            <th>广告ID</th>
+                            <th>点击时间</th>
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    <div class="w100 fr pat30">
+                        {page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .around p:nth-child(1){
+            font-weight: bold;font-size:14px;color:red;
+        }
+        .around p:nth-child(2){
+            font-weight: bold;font-size:14px;color:red;margin-left:10px;
+        }
+        .c{
+            color: #3FCF7F !important;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .b{
+            color: red !important;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .around .row{
+            width:25%;
+        }
+        .around {
+    		justify-content: space-around;
+    	}
+
+        .flex-wrap {
+    		flex-wrap: wrap;
+    	}
+    
+    	.height-center {
+    		align-items: center;
+    	}
+    
+    	.width-center {
+    		justify-content: center;
+    	}
+    
+    	.row {
+    		display: flex;
+    		flex-direction: row;
+    	}
+    
+    	.between {
+    		justify-content: space-between;
+    	}
+    
+    	.column {
+    		display: flex;
+    		flex-direction: column;
+    	}
+    
+    	.flex-center {
+    		justify-content: center;
+		align-items: center;
+	}
+    </style>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">公告设置</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                    <p class="p1 btn3">温馨提示</p>
+		                    <p class="pub">1. 6点至当日18点为白间公告</p>
+		                    <p class="pub">2. 18点至次日6点为晚间公告</p>
+
+		               </div>
+		            </div>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+                			<tr>
+                				<td>白间公告</td>
+                				<td><input name="ment1" value="{ment1}" placeholder="6点至当日18点显示"></td>
+                			</tr>    
+            			    <tr>
+                				<td>晚间公告</td>
+                				<td><input name="ment2" value="{ment2}" placeholder="18点至次日6点显示"></td>
+                			</tr>
+                			
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="updatement"><i class="fa fa-edit"></i>更新</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

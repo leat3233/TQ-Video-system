@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/daili.js"></script>
+    <style>
+        select{
+                transition: box-shadow .4s ease-in-out;
+    color: #888;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cccccc;
+    width: 80%;
+    padding: 10px 10px;
+    border-radius: 4px;width:20%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="fl">
+        <a href=""><img src="{G:IMG}/bklogo.png" /></a>
+    </div>
+    <div class="fr mart11">
+        
+    	<a href="{G:INDEX}/uplivepopo.php?mod=login" class=" btn btn4"><i class="fa fa-sign-out"></i> 退出</a>
+    </div>
+    <div class="clear"></div>
+</header>
+    {template:model:daili:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:daili:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">提现申请</p>
+                    <div class="frmtable_content">
+                		<table class="w100 addtopic">
+                			<tbody><tr>
+                				<td>提现额度</td>
+                				<td><p style="color:red;font-weight:bold;font-size:14px;">{money}元</p></td>
+                			</tr>
+                			<tr>
+                				<td>选择提现类型</td>
+                				<td>
+                				    <select name="paytype">
+                				        <option>支付宝</option>
+                				        <option>银行卡</option>
+                				        <option>USDT</option>
+                				    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>账号信息 <a style='color:red' href="javascript:alert('如何填写?例如:\n1.支付宝:18888888888 姓名:支小宝\n2.银行卡: 卡号:688888888888888888 姓名:张三 开户行:这个农业银行\n3.USDT钱包地址:xxxxxxxxxx\n三选一')">帮助</a></td>
+                				<td><input name="paymsg" placeholder="输入错误将无法提现,损失自行承担"></td>
+                			</tr>
+                            <input type="hidden" name="tel" value="{user}" />
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn1" rel="addtx">确定提现</td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+   
+            <div class="content">
+                <div class="frame">
+                    <p class="title">历史提现</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <td>提现金额/元</td>
+                            <td>提现时间</td>
+                            <td>卡号信息</td>
+                            <td>提现状态</td>
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

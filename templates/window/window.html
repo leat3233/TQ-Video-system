@@ -1,0 +1,26 @@
+<script>
+$('.toastclose').click(function(){
+    $('.toast').fadeOut('fast',function(){
+    	$('.message').fadeOut('fast');
+    });
+});
+$(this).keydown( function(e) {
+    var key = window.event?e.keyCode:e.which;
+    if(key.toString() == "13"){
+        return false;
+    }
+});
+</script>
+<div class="message w100 h100 fix">
+    <div class='toast'>
+        <div class="center">
+        	<i class='fa {type}'></i>
+            <p class="n">提示</p>
+            <p class="msg">{msg}</p>
+            <div>
+            	<a href="{url}" >{name}</a>
+            	{cancel}
+            </div>
+        </div>
+    </div>
+</div>

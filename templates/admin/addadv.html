@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <link rel="stylesheet" href="{G:CSS}/time.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <script src="{G:JS}/time.js"></script>
+    <link rel="stylesheet" href="{G:PLUGINS}/themes/default/default.css" />
+	<link rel="stylesheet" href="{G:PLUGINS}/plugins/code/prettify.css" />
+	<script charset="utf-8" src="{G:PLUGINS}/kindeditor.js"></script>
+	<script charset="utf-8" src="{G:PLUGINS}/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="{G:PLUGINS}/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea', {
+				cssPath : '{G:PLUGINS}/plugins/code/prettify.css',
+				uploadJson : '{G:PLUGINS}/php/upload_json.php',
+				fileManagerJson : '{G:PLUGINS}/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+				    this.sync();
+				},
+				afterBlur:function(){
+				    this.sync();
+				}
+			});
+			prettyPrint();
+		});
+		$(function(){
+		    $("select[name=content4]").find("option[value='{content4}']").attr("selected",true);
+		    $("select[name=position]").find("option[value='{position}']").attr("selected",true);
+            $("select[name=select]").find("option[value='{click}']").attr("selected",true);
+            $('.select').change(function(data){
+                var value = $(".select option:selected").attr("value");
+                $('.selectdiv div.mt20').addClass('hide');
+                if(value=='noselect'){
+                    return;
+                }else if(value=='跳出APP到浏览器'){
+                    $('.div1').removeClass('hide');
+                }else if(value=='本APP内打开外链'){
+                    $('.div2').removeClass('hide');
+                }else if(value=='跳到APP内某个帖子'){
+                    $('.div3').removeClass('hide');
+                }else if(value=='跳到APP功能项'){
+                    $('.div4').removeClass('hide');
+                }else if(value=='跳到APP专题页'){
+                    $('.div5').removeClass('hide');
+                }
+                
+            });
+            $('.position').change(function(data){
+                var value = $(".position option:selected").attr("value");
+                $('.search div.mr20').addClass('hide');
+                if(value=='noselect'){
+                    return;
+                }else if(value=='APP帖子详情页'){
+                    $('.pos1').removeClass('hide');
+                }else if(value=='APP应用中心'){
+                    $('.pos2').removeClass('hide');
+                }else if(value=='APP会员-会员'){
+                    $('.pos3').removeClass('hide');
+                }else if(value=='APP会员-金币'){
+                    $('.pos4').removeClass('hide');
+                }else if(value=='APP会员-精选'){
+                    $('.pos5').removeClass('hide');
+                }else if(value=='首页-推荐'){
+                    $('.pos6').removeClass('hide');
+                }else if(value=='首页-话题'){
+                    $('.pos7').removeClass('hide');
+                }else if(value=='微社区-推荐'){
+                    $('.pos9').removeClass('hide');
+                }else if(value=='播放页'){
+                    $('.pos10').removeClass('hide');
+                }
+                
+            });
+            
+        });
+	</script>
+    <style>
+        .search input{
+            width: 70%;
+        }
+        .ke-container{
+            width: 75% !important;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">广告添加</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                    <p class="p1 btn3">温馨提示</p>
+		                    <p class="pub">1. 本页面增加的广告理论上数量无限, APP页面固定量的广告设置请前往 APP内部设置-首页/微社区.</p>
+		                    <p class="pub">2. 每个视频播放页都可设置一则广告, 有多少视频帖子, 就可以设置多少广告. 如果不设置, 则在已设置的视频页广告中随机获取.</p>
+		                  
+		               </div>
+		            </div>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                		    <tr>
+                				<td>广告位置</td>
+                				<td class="search">
+            						<select name="position" class="position">
+            						    <option value="noselect">--请选择广告位置--</option>
+                                        <!--<option value="APP帖子详情页">APP帖子详情页</option>-->
+                                        <option value="应用中心">应用中心</option>
+                                        <option value="会员-会员">会员-会员</option>
+                                        <option value="会员-金币">会员-金币</option>
+                                        <option value="会员-片库">会员-片库</option>
+                                        <option value="首页-推荐">首页-推荐</option>
+                                        <option value="首页-话题">首页-话题</option>
+                                        <option value="糖圈-推荐">糖圈-推荐</option>
+                                        <option value="播放页">播放页</option>
+                                    </select>
+                                  
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>广告备注</td>
+                				<td><p><input name="remarks" value="{remarks}" placeholder="" /></p></td>
+                			</tr>
+                   <!--         <tr>-->
+                			<!--	<td>所属商家</td>-->
+                			<!--	<td><p><input name="tel" value="{tel}" placeholder="请填写用户手机号码,不填则属于运营者" /></p></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>广告封面</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="imgcover" value="{imgcover}">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>点击跳转链接需带有http/https</td>-->
+                			<!--	<td><p><input id="time" name="endtime" value="{endtime}" placeholder="点击选择到期时间, 不填代表永不过期" /></p></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>广告点击效果</td>
+                				<td class="search selectdiv">
+                				    <select name="select" class="select">
+                				        <!--<option value="noselect">--请选择点击效果--</option>-->
+                                        <option value="跳出APP到浏览器">跳出APP到浏览器</option>
+                                        <!--<option value="本APP内打开外链">本APP内打开外链</option>-->
+                                        <!--<option value="跳到APP内某个帖子">跳到APP内某个帖子</option>-->
+                                        <!--<option value="跳到APP功能项">跳到APP功能项</option>-->
+                                        <!--<option value="跳到APP专题页">跳到APP专题页</option>-->
+                                    </select>
+                                    <div class=" mt20 div1"><input name="content1" value="{content1}" placeholder="请输入链接" /></div>
+                                <!--    <div class="hide mt20 div2"><input name="content2" value="{content2}" placeholder="请输入链接" /></div>-->
+                                <!--    <div class="hide mt20 div3"><input name="content3" value="{content3}" placeholder="请输入帖子ID,可前往视频/微社区管理页面查看" /></div>-->
+                                <!--    <div class="hide mt20 div4">-->
+                                <!--        <select name="content4">-->
+                                <!--            <option value="0">--请选择功能项--</option>-->
+                    				        <!--<option value="VIP会员充值">VIP会员充值</option>-->
+                                <!--            <option value="钻石充值">钻石充值</option>-->
+                                <!--            <option value="兑换中心">兑换中心</option>-->
+                                <!--            <option value="客服中心">客服中心</option>-->
+                                <!--            <option value="我的收益">我的收益</option>-->
+                                <!--            <option value="钻石兑换现金">钻石兑换现金</option>-->
+                                <!--            <option value="提现">提现</option>-->
+                                <!--            <option value="商家入驻">商家入驻</option>-->
+                                <!--            <option value="如何赚钱">如何赚钱</option>-->
+                                <!--            <option value="分享推广">分享推广</option>-->
+                                <!--            <option value="应用推广中心">应用推广中心</option>-->
+                                <!--            <option value="发布页面">发布页面</option>-->
+                                <!--            <option value="设置">设置</option>-->
+                                <!--            <option value="关注与粉丝">关注与粉丝</option>-->
+                                <!--            <option value="我的邀请">我的邀请</option>-->
+                                <!--            <option value="充值记录">充值记录</option>-->
+                                <!--            <option value="发布管理">发布管理</option>-->
+                                <!--        </select>-->
+                                <!--    </div>-->
+                                <!--    <div class="hide mt20 div5">-->
+                                <!--        <textarea name="content5" placeholder="">{content5}</textarea>-->
+                                <!--    </div>-->
+                                </td>
+                			</tr>
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

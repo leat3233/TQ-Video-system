@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>设置</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+
+    <style>
+        .frmtable_content td.r input{
+            margin-bottom:5px;width:10%
+        }
+        td.r{
+            font-size:14px;
+            color:#888;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">说明</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                   
+		                    <p class="pub" style="color:red;font-weight:bold">重启PHP服务,即可中断采集（测试的时候可能会用到）</p>
+		                    <p class="pub" style="color:red;font-weight:bold">测试专用链接: https://cj.lziapi.com/api.php/provide/vod/?ac=list</p>
+		               </div>
+		            </div>
+                </div>
+        		<div class="frame">
+                    <p class="title">采集设置</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+                	      
+                			<tr>
+                				<td>输入采集链接</td>
+                				<td><input  name="caiurl" placeholder="填写类似https://www.xxx.com/api.php/prodao/vod/?ac=list的连接"></td>
+                			</tr>
+                		
+                		
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit w6666" rel="cai" style="background: #65cea7;padding: 7px 30px;"><i class="fa fa-edit"></i>开采</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+       $(function(){
+           $('.w6666').click(function(){
+                alert("采集已开始！ 关闭页面不受影响, 记得设置PHP超时时间,否则采集会中断");
+            });
+       });
+    </script>
+</body>
+</html>

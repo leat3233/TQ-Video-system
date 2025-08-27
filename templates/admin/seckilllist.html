@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                    <p class="title">影片秒杀设置</p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <th>秒杀时间</th>
+                            <th>影片ID</th>
+                            <th>秒杀价格</th>
+                            <th>上架数量</th>
+                            <th>操作</th>
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    <div class="fr pat30 w100">
+                        {page}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

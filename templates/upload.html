@@ -1,0 +1,274 @@
+
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <title>视频上传</title>
+    <link rel="stylesheet" type="text/css" href="{G:CSS}/upload.css" />
+    <script src="{G:JS}/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="{G:JS}/webuploader.js"></script>
+    <script type="text/javascript" src="{G:JS}/md5.js"></script>
+    <script type="text/javascript" src="{G:JS}/upload.js"></script>
+    <script type="text/javascript" src="{G:JS}/m.js"></script>
+    <style>
+        body,html{
+            background:#070711;
+        }
+        header{
+            width:100%;position: fixed;height:52px;background: #07070F;top:0;left:0;z-index: 99;
+        }
+        header p{
+            color:#fff;font-size:15px;font-weight: bold;
+        }
+        header img{
+            position: absolute;
+            left: 0;
+            height: 34px;
+        }
+        .op{
+            height:30px;
+        }
+        .t{
+            color:#fff;opacity: 0.8;font-size:14px;margin-top:20px;
+        }
+        .www,.wwww{
+            background: #212129;border-radius: 7px;padding:15px 0;width:100%;
+        }
+        .y{
+            width:97%;
+        }
+        .i{
+            color:#fff;margin-top:7px;font-size:14px;text-align: center;font-size:12px;opacity: 0.8;
+        }
+        .mask{
+            position: fixed;top:0;left:0;width:100%;height:100%;background:rgb(33 28 75 / 50%);z-index:9999;
+        }
+        .qx{
+            position: fixed;bottom:0;left:0;width: 90%;background:#0A060F;z-index:99999;padding:5%;
+        }
+        .qx p{
+            color:#fff;font-size:15px;font-weight: bold;
+        }
+        .btit{
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 0 0 20px;
+            margin-bottom: 20px;
+            font-size: 16px !important;
+            opacity: 0.5;
+            color:#fff;font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="row flex-center">
+        <img onclick="go()" src="data:image/webp;base64,UklGRkoEAABXRUJQVlA4TD4EAAAvU8AUEA/mILZtVdn33O+ehv5tyPAFDi4NHESSpEg13ces5v27eQ2H7SCSJEWq6T5mNe/fzWs4bDi2rR3P3vt8sdllAmld2ePLRDKB/LaNylYV67nrABgAfwLkQ+DDwckRML6879wJATohQIBOjBN1QoAAAQL/wCegwNLJEhg5cQJOIAlIVOGZun7fBJg4sQAB4ESdKPBwed+pEwewv9939vp9dideoOdkeP0+A9Qv79t1EmyGYQlsRhWmbcsCcJIBbIBVNI0DCAPyvEsCIIAAAASQqFJJuLzvvRMsx9FJe1B13YskdtMUl6TtOE67aRo1w5CSdJ32PO2sJKS9lGQHvtIWwAN4okokIaoOJeUlHUnKS0LaKJqGgBVVjCpJ20hCVEES0jaSIAmApG0kWZJU0vp+39yui+t58vp9ev7/zXZdevr92mmvF02DqCoBUnXd7Pp9u4DWfV+Iqn4zDGfjumrRNArEy7ZNSOJyHNW0CZwXTfNR971Ctmzbpu2cfbaObduObdu2bV7F5r2xfRHb+rWz15rBXG/JQ0T/GbmNpKg7WYbTQM8TVP/dJkckc/fU9WTplnKF5wVBEHhezQrKkSBKy1etXCGJgnLAiKL8oaFWz70fJQp8BUnzfk+NyAadLPBKMKD2ze4alT91kqDmWFD3bAdtbZlRI/IcC7ZvA6wtsugk4hTbjq2QtS92g0ycItu5GXRW0GHUEIFr20bQyaeoQP5R13rQKacTAeoE1fNDQKcez0a9Vj3xCKZPhoJOOlNIBp0mrcgjOwx09NliOuyx6olzRI8MBx3TWspEfXaiqXGIHhwJOvZCXb/DpJWIvgvPdaDjL5czsbo6SUC1eQToxKuEZmxb1oIOvKboNOtkRHlR27IGtP8NbFWKmpbVoP1ulbOxAK4cL8iGOaB976CrIvqrT90g+9yrZOO/ECN4UWNcAtnrQTUXD2LL8ZLOugCK+Y2FZMht0VOincsG+3fwzrymqNdmoEZpxDA69g8Gmb3PrYx9atzQGJ3Bd91BZh4wE6FC3gSSb3uAjDpM3cEMvc0Xy73oCTL0MdTBYH1IZ3aFUsWnvUCGdGkl9Bdt3kim/LA3yPo2VIiey+Twx7Ll+31BNnRSIE4mzM5APFu52w9kUwc2ss5CcLs/yJZ2HSp8/YME5ZsDQLY9QoSDuT4IZPtzdMgXylcmgOx8zQSxbPnSOJBdr7USzwQXx4CMoOYq2GTKraNBflBzKnzOTYJiITX3Q8Zf58Q0IJaCc1SsRkdROjadjs9AHcEAR2f8Rh2BjMMfzRQPLVace7IeVL2DTyRdqL78+u1VJuajaih8TA5fOJnNF/KZRMgN1Hr42D3BaCKZjIU8xASdkdrZaHV6A8Ggz20nZtOs1Ph6k9XucNgtRqDGZwBR1uoNRqNBp5FYWuAQREnWyDK1ZsLk2g67a1As3eJU/8RSpQI=" />
+        <p>视频上传</p>
+    </header>
+    <p style="height:58px"></p>
+    <div class="row flex-center h100 wwww" style="display:none">
+        <p style="font-size:16px;font-weight:bold;color:#fff">上传成功</p>
+    </div>
+    
+    <div class="column wrap">
+        <div>
+            <div class="row between height-center">
+                <div  class="chosevideo column y part1">
+                    <div class="column www flex-center ">
+                        <img class="op" src="data:image/png;base64,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" />
+                        <p class="t">点击上传视频</p>
+                    </div>
+                    <!--<p class="i">*视频大小不超过100M</p>-->
+                </div>
+               
+            </div>
+            <div id="divFileProgressContainer"></div>
+            <div class="clear"></div>
+        </div>
+        <img class="line-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wgARCAAlAkoDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwb/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAfBjUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1g1hdYNYKSKSKSK2BaBaBe8x0cx0cx0cx0cx0cx0cx0cxaBaBeSKSKSKSKSNYNYNYTWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREScP/aAAgBAQABBQLktKUqKUqKioqKioqKioqNI0jSNI0jSNI0ioqKioqKioqKiopSopeT/wD/xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/AV//xAAYEAEBAQEBAAAAAAAAAAAAAAAAMjEBcP/aAAgBAQAGPwLx/GMYxjGMYxiUpSnieJ4nieI4jiOI4jiOI4jiOJ4nieJ4lKUpSxjGMYxjGMZ5B//EAB0QAAICAwEBAQAAAAAAAAAAAAABEVFhkfGBIXD/2gAIAQEAAT8h/GvDw+UfKPlEoSqEqhKoSqEqhChCu2QrtmDtkK7ZCu2YG2Ym2Ym2Ym2dpnaZ2mdpnaZ3GdRnUZ1GdRnUZ1GdRnUZ3mdpnaZ2mYu2Ym2Ym2Ym2Ym2YG2QrtkK7Zg7ZCu2QqSqEqhKoShKoShKHyjw8PDz8b//2gAMAwEAAgADAAAAEAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQccQQMMAAMIAMIAAEMIAAMIEMMAAMIAQUcQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQf//EABcRAQEBAQAAAAAAAAAAAAAAABEAAVD/2gAIAQMBAT8Q57MzM7Ozs7OzszMzPQ//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/EF//xAAmEAABAwMCBQUAAAAAAAAAAAAAAcHwEVHxYZEhMECB0RAgYHDh/9oACAEBAAE/EPi1NOg78iqXK8mvr391UunT1KpY4WbiKlhWwVs7lbO4lhuZBTMKZ4T95TPKZZfJEHIg5IHJ45PHJI5BHIY5HHIg5EHJg5MHJ05InIE5AnI85HnI85EnIE5AnJU5OnJg5MHIo5HHII5BHII5JHJ45PHIA5EHMovkzy+TPKZpTT7mQU0G5oNytkqlhVLDhkVTIqlvpr//2Q==" />
+        
+        <div class="row height-center ">
+            <span class="text">视频标题</span><span class="text2">好的标题可提升视频点击率</span>
+        </div>
+        <input class="mt10 textarea" name="title" placeholder="请填写视频标题" />
+        <img class="line-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wgARCAAlAkoDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwb/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAfBjUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1g1hdYNYKSKSKSK2BaBaBe8x0cx0cx0cx0cx0cx0cx0cxaBaBeSKSKSKSKSNYNYNYTWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREScP/aAAgBAQABBQLktKUqKUqKioqKioqKioqNI0jSNI0jSNI0ioqKioqKioqKiopSopeT/wD/xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/AV//xAAYEAEBAQEBAAAAAAAAAAAAAAAAMjEBcP/aAAgBAQAGPwLx/GMYxjGMYxiUpSnieJ4nieI4jiOI4jiOI4jiOJ4nieJ4lKUpSxjGMYxjGMZ5B//EAB0QAAICAwEBAQAAAAAAAAAAAAABEVFhkfGBIXD/2gAIAQEAAT8h/GvDw+UfKPlEoSqEqhKoSqEqhChCu2QrtmDtkK7ZCu2YG2Ym2Ym2Ym2dpnaZ2mdpnaZ3GdRnUZ1GdRnUZ1GdRnUZ3mdpnaZ2mYu2Ym2Ym2Ym2Ym2YG2QrtkK7Zg7ZCu2QqSqEqhKoShKoShKHyjw8PDz8b//2gAMAwEAAgADAAAAEAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQccQQMMAAMIAMIAAEMIAAMIEMMAAMIAQUcQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQf//EABcRAQEBAQAAAAAAAAAAAAAAABEAAVD/2gAIAQMBAT8Q57MzM7Ozs7OzszMzPQ//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/EF//xAAmEAABAwMCBQUAAAAAAAAAAAAAAcHwEVHxYZEhMECB0RAgYHDh/9oACAEBAAE/EPi1NOg78iqXK8mvr391UunT1KpY4WbiKlhWwVs7lbO4lhuZBTMKZ4T95TPKZZfJEHIg5IHJ45PHJI5BHIY5HHIg5EHJg5MHJ05InIE5AnI85HnI85EnIE5AnJU5OnJg5MHIo5HHII5BHII5JHJ45PHIA5EHMovkzy+TPKZpTT7mQU0G5oNytkqlhVLDhkVTIqlvpr//2Q==" />
+       
+       
+       
+       
+        <div class="row height-center ">
+            <span class="text">选择视频类型</span>
+        </div>
+        <div class="btn-wrap row between height-center mt10 opentypeshow">
+            <div class="row height-center">
+                <p style="color:#fff;font-size:14px;opacity: 0.5;">视频类型</p>
+            </div>
+            <div class="row height-center">
+                <p  style="color:#fff;font-size:14px;opacity: 0.5;margin-right:10px" class="typeshow">长视频</p>
+                <img style="height: 15px;opacity:0.5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwBAMAAACCgmVcAAAAG1BMVEVHcEz///////////////////////////////8W/R0OAAAACXRSTlMAs6knnxFvKHVmzc7pAAAAZklEQVQoz2NgIAeEuaSi8FkdBYUMkAXYBAUFlZEFWIACKEpAAihKQFpQlLAqoisxQlfCPBSVqKIrkWBAUyKCJMCOLlCEpoUd3VB0azEcNhgVYEQ2RnLASDAYSQoj0WEkS4yESzIAAFbSGUVKCDvUAAAAAElFTkSuQmCC" />
+            </div>
+        </div>
+        <!--<div class="row height-center mt10">-->
+        <!--    <div class="row height-center">-->
+        <!--        <input type="radio" name="vidtypes" class="radio" value="短视频" /><span class="radio-text">短视频</span>-->
+        <!--    </div>-->
+        <!--    <div class="row height-center mr">-->
+        <!--        <input type="radio" name="vidtypes" checked="checked" class="radio" value="长视频" /><span class="radio-text">长视频</span>-->
+        <!--    </div>-->
+            
+        <!--</div>-->
+        <img class="line-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wgARCAAlAkoDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwb/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAfBjUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1g1hdYNYKSKSKSK2BaBaBe8x0cx0cx0cx0cx0cx0cx0cxaBaBeSKSKSKSKSNYNYNYTWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREScP/aAAgBAQABBQLktKUqKUqKioqKioqKioqNI0jSNI0jSNI0ioqKioqKioqKiopSopeT/wD/xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/AV//xAAYEAEBAQEBAAAAAAAAAAAAAAAAMjEBcP/aAAgBAQAGPwLx/GMYxjGMYxiUpSnieJ4nieI4jiOI4jiOI4jiOJ4nieJ4lKUpSxjGMYxjGMZ5B//EAB0QAAICAwEBAQAAAAAAAAAAAAABEVFhkfGBIXD/2gAIAQEAAT8h/GvDw+UfKPlEoSqEqhKoSqEqhChCu2QrtmDtkK7ZCu2YG2Ym2Ym2Ym2dpnaZ2mdpnaZ3GdRnUZ1GdRnUZ1GdRnUZ3mdpnaZ2mYu2Ym2Ym2Ym2Ym2YG2QrtkK7Zg7ZCu2QqSqEqhKoShKoShKHyjw8PDz8b//2gAMAwEAAgADAAAAEAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQccQQMMAAMIAMIAAEMIAAMIEMMAAMIAQUcQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQf//EABcRAQEBAQAAAAAAAAAAAAAAABEAAVD/2gAIAQMBAT8Q57MzM7Ozs7OzszMzPQ//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/EF//xAAmEAABAwMCBQUAAAAAAAAAAAAAAcHwEVHxYZEhMECB0RAgYHDh/9oACAEBAAE/EPi1NOg78iqXK8mvr391UunT1KpY4WbiKlhWwVs7lbO4lhuZBTMKZ4T95TPKZZfJEHIg5IHJ45PHJI5BHIY5HHIg5EHJg5MHJ05InIE5AnI85HnI85EnIE5AnJU5OnJg5MHIo5HHII5BHII5JHJ45PHIA5EHMovkzy+TPKZpTT7mQU0G5oNytkqlhVLDhkVTIqlvpr//2Q==" />
+        
+        
+        
+        <div class="row height-center" >
+            <span class="text">视频话题</span><span class="text2">选择最符合视频内容的话题, 最多3个</span>
+        </div>
+        <div class="btn-wrap row between height-center mt10 opentypeshow2">
+            <p style="color:#fff;font-size:14px;opacity: 0.5;" class="sbq">#选择话题</p><img style="height: 15px;opacity: 0.5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwBAMAAACCgmVcAAAAG1BMVEVHcEz///////////////////////////////8W/R0OAAAACXRSTlMAs6knnxFvKHVmzc7pAAAAZklEQVQoz2NgIAeEuaSi8FkdBYUMkAXYBAUFlZEFWIACKEpAAihKQFpQlLAqoisxQlfCPBSVqKIrkWBAUyKCJMCOLlCEpoUd3VB0azEcNhgVYEQ2RnLASDAYSQoj0WEkS4yESzIAAFbSGUVKCDvUAAAAAElFTkSuQmCC" />
+        </div>
+        <input type="hidden" name="tel" value="{CW('get/tel')}" />
+        <input type="hidden" name="titlepic" id="titlepic" value=""  /><!--封面链接-->
+        <input type="hidden" name="odownpath1" id="odownpath1" value="" /><!--视频链接-->
+        <input type="hidden" name="coverurl" value="" class="coverurl" />
+        <input type="hidden" name="ts" value="长视频" class="ts" />
+        <input type="hidden" name="arrtostr" value="" class="arrtostr" />
+        <input type="hidden" name="playtime" id="playtime" value=""  />
+        <p class="button ">发布</p>
+        <div class="mask" style="display:none"></div>
+        <!--标签-->
+        <style>
+            .qx,.qx2{
+                position: fixed;bottom:0;left:0;width: 90%;background:#0A060F;z-index:99999;padding:5%;
+            }
+            .bq{
+                max-height:300px;overflow-y: auto;margin-bottom:10px;
+            }
+            .bq p{
+                background: #383840;
+                color: #fff;
+                border-radius: 100px;
+                padding: 6px 11px;
+                margin: 0 10px 10px 0;
+                font-weight: normal;
+                font-size: 14px;
+                
+            }
+            .select{
+                display: inline-block;
+                background-image: linear-gradient(to right,#68566E,#5E6670);
+                border-radius: 10px;
+                text-align: center;
+                padding: 10px 0;
+                margin-bottom: 5px;
+                margin-top: 15px;
+                font-weight: 700;
+                color:#fff;
+            }
+            .sl{
+                background: #32327f !important;
+            }
+            .submit{
+                background: #211b67;
+                color: #fff;
+                font-size: 14px;
+                padding: 10px 0;
+                border-radius: 100px;
+                width: 37%;
+                text-align: center;
+            }
+            .zdy{
+                padding: 5px 0;
+                border-radius: 100px;
+                width: 60%;
+                text-align: center;
+            }
+        </style>
+        <div class="qx2 column"  style="display:none">
+            <p class="btit">最多选择3个话题</p>
+            <div class="row flex-wrap bq">
+                {data}
+            </div>
+          
+            <p class="select">确定</p>
+        </div>
+        <div class="qx column" style="display:none">
+            <p class="btit">视频查看权限</p>
+            <div class="column flex-center selecttype">
+                <p>长视频</p>
+                <img class="line-img2" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wgARCAAlAkoDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwb/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAfBjUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1g1hdYNYKSKSKSK2BaBaBe8x0cx0cx0cx0cx0cx0cx0cxaBaBeSKSKSKSKSNYNYNYTWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//xAAYEAADAQEAAAAAAAAAAAAAAAAAAREScP/aAAgBAQABBQLktKUqKUqKioqKioqKioqNI0jSNI0jSNI0ioqKioqKioqKiopSopeT/wD/xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/AV//xAAYEAEBAQEBAAAAAAAAAAAAAAAAMjEBcP/aAAgBAQAGPwLx/GMYxjGMYxiUpSnieJ4nieI4jiOI4jiOI4jiOJ4nieJ4lKUpSxjGMYxjGMZ5B//EAB0QAAICAwEBAQAAAAAAAAAAAAABEVFhkfGBIXD/2gAIAQEAAT8h/GvDw+UfKPlEoSqEqhKoSqEqhChCu2QrtmDtkK7ZCu2YG2Ym2Ym2Ym2dpnaZ2mdpnaZ3GdRnUZ1GdRnUZ1GdRnUZ3mdpnaZ2mYu2Ym2Ym2Ym2Ym2YG2QrtkK7Zg7ZCu2QqSqEqhKoShKoShKHyjw8PDz8b//2gAMAwEAAgADAAAAEAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQccQQMMAAMIAMIAAEMIAAMIEMMAAMIAQUcQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQf//EABcRAQEBAQAAAAAAAAAAAAAAABEAAVD/2gAIAQMBAT8Q57MzM7Ozs7OzszMzPQ//xAAUEQEAAAAAAAAAAAAAAAAAAABg/9oACAECAQE/EF//xAAmEAABAwMCBQUAAAAAAAAAAAAAAcHwEVHxYZEhMECB0RAgYHDh/9oACAEBAAE/EPi1NOg78iqXK8mvr391UunT1KpY4WbiKlhWwVs7lbO4lhuZBTMKZ4T95TPKZZfJEHIg5IHJ45PHJI5BHIY5HHIg5EHJg5MHJ05InIE5AnI85HnI85EnIE5AnJU5OnJg5MHIo5HHII5BHII5JHJ45PHIA5EHMovkzy+TPKZpTT7mQU0G5oNytkqlhVLDhkVTIqlvpr//2Q==" />
+                <p>短视频</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var ts;//谁可以看
+        var arr = new Array();//arr.join(',')
+        var arrtostr = '';//标签
+        $(function(){
+            
+            $('.select').click(function(){
+                if(arr.length<1 || arr.length>3){
+                    alert("话题个数为1-3个");
+                }else{
+                    arrtostr = arr.join(',');
+                    $('.sbq').text(arrtostr);
+                    $('.arrtostr').val(arrtostr);
+                    $('.mask').fadeOut(300);
+                    $('.qx,.qx2').slideUp(300);
+                }
+            });
+            $('.opentypeshow').click(function(){
+                $('.mask').fadeIn(300);
+                $('.qx').slideDown(300);
+            });
+            $('.opentypeshow2').click(function(){
+                $('.mask').fadeIn(300);
+                $('.qx2').slideDown(300);
+            });
+            
+            $('.mask').click(function(){
+                $('.mask').fadeOut(300);
+                $('.qx,.qx2').slideUp(300);
+            });
+            $('.selecttype p').click(function(){
+                ts = $(this).text();
+                $('.ts').val(ts);
+                $('.typeshow').text(ts);
+                $('.mask').fadeOut(300);
+                $('.qx').slideUp(300);
+            });
+            $("body").on("click", '.bq p', function() {
+                var isexist = $(this).hasClass("sl");
+                var name = $(this).text();
+                if(!isexist){
+                    if($('.sl').length>2){
+                        alert("最多选择3个话题");return;
+                    }
+                    $(this).addClass('sl');
+                    arr.push(name);
+                }else{
+                    $(this).removeClass('sl');
+                    let index = arr.indexOf(name);
+                    if (index !== -1) {
+                      arr.splice(index, 1);
+                    }
+                }
+                
+            });
+        });
+        function go(){
+            window.history.back(-1);
+        }
+    </script>
+</body>
+
+</html>

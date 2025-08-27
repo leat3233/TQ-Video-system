@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>设置</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <link rel="stylesheet" type="text/css" href="{G:CSS}/upload.css" />
+ 
+    <script type="text/javascript" src="{G:JS}/webuploader.js"></script>
+    <script type="text/javascript" src="{G:JS}/md5.js"></script>
+    <script type="text/javascript" src="{G:JS}/upload2.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("select[name=g2]").find("option[value='{g2}']").attr("selected",true);
+            $("select[name=g3]").find("option[value='{g3}']").attr("selected",true);
+            $('.select').change(function(d){
+                if($(this).val()=='单用户'){
+                    $('.ishowhide').show();   
+                }
+            });
+            let s = '{g3}';
+            if(s=='单用户'){
+                $('.ishowhide').show();   
+            }
+        });
+    </script>
+    <style>
+        .frmtable_content td.r input{
+            margin-bottom:5px;width:10%
+        }
+        td.r{
+            font-size:14px;
+            color:#888;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">参数设置</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+                			<tr>
+                				<td>随机生成的用户数 （写法:  100|200  代表100-200之内随机生成用户</td>
+                				<td class="row height-center" style="padding: 30px;">
+                			    <p style="font-size: 14px;color: red;font-weight: bold;">勾选激活该功能,不选则无效</p>
+                				    <input type="checkbox" name="open" style="width: 50px;box-shadow:initial;border:0" />
+                				    <input style="width:200px" value="{g1}" name="g1" placeholder="">
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>视频类型</td>
+                				<td>
+                			        <select name="g2">
+                			            <option value="长视频">长视频</option>
+                			            <option value="短视频">短视频</option>
+                			        </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>用户类型</td>
+                				<td>
+                			        <select name="g3" class="select">
+                			            <option value="随机">随机</option>
+                			            <option value="单用户">单用户</option>
+                			        </select>
+                				</td>
+                			</tr>
+                			<tr class="ishowhide">
+                				<td>用户ID/推广码</td>
+                				<td>
+                			       <input style="width:200px" value="{g4}" name="g4" placeholder="">
+                				</td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="updatesyssss"><i class="fa fa-edit"></i>设置</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+                <div class="frame">
+                    <p class="title">上传(上传完毕,可以打开短视频/长视频管理查看)===========<span style='color:red;font-weight:bold'>注意：多视频上传功能隶属云转码系统功能范畴, 该功能需要单独付费，同时包含前端用户上传到云转码的整套功能</span></p>
+                    <div class="frmtable_content">
+                        
+                        
+                        
+                        <div  class="chosevideo column y part1" >
+                    <div class="column  flex-center" style="background:#65cea7;width:150px;height:150px;border-radius: 15px;">
+                        <img class="op" src="data:image/png;base64,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" />
+                        <p class="t" style="font-size: 14px;font-weight: bold;color: #fff;margin-top:10px">多视频上传</p>
+                    </div>
+                   
+                </div>
+                        
+                       <div id="divFileProgressContainer"></div> 
+                        
+                        
+                	</div>
+                </div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .height-center {
+		align-items: center;
+	}
+
+	.width-center {
+		justify-content: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.between {
+		justify-content: space-between;
+	}
+	.frmtable_content select {
+    transition: box-shadow .4s ease-in-out;
+    color: #888;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cccccc;
+    width: 20%;
+    padding: 10px 10px;
+    border-radius: 4px;
+}
+.progressName {
+    font-size: 14px;
+    margin: 10px 0px;
+    color:#6bc5a4 !important;font-weight: bold;
+}
+.time_name,.progressBarStatus li,.time_left,.uploaded_speed{
+    color:#6bc5a4 !important;font-weight: bold;
+}
+.ishowhide{
+    display: none;
+}
+.progressBarInProgress{
+    background: #6bc5a4 !important;
+}
+    </style>
+    <script>
+        var isover = false;
+        var hostname = window.location.hostname
+        var port = window.location.port || '80';
+        var ServerUrl = "https://www.web818xc69.com/uploads";
+        
+        $(function(){
+            uploader.on('all', function (type) {
+                console.log(type);
+                if (type === 'startUpload') {
+                    state = 'started';
+                    //$('#chosevideo').remove();
+                    console.log("开始上传了~");
+                } else if (type === 'stopUpload') {
+                    state = 'stoped';
+                    console.log("开始暂停了~");
+                } else if (type === 'uploadFinished') {
+                    state = 'finished';
+                    isover = true;
+                    if($('.coverurl').val()){
+                        $('.part2 input,.part2 label').remove();
+                    }
+                    if($('#odownpath1').val()){
+                        $('.part1 input,.part1 label').remove();
+                    }
+                    
+                    console.log("开始结束了~");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

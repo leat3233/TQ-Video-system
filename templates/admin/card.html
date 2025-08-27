@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">兑换卡生成</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody><tr>
+                				<td>类型</td>
+                				<td class="search">
+                				    <select name="cardtype">
+                                        <option value="1">金币</option>
+                                        <option value="2">会员</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>金币数或者VIP天数</td>
+                				<td><input name="cardnum" placeholder="如果生成的是VIP, 无论多少天, 标签将统一为青铜"></td>
+                			</tr>
+                			<tr>
+                				<td>生成多少张兑换卡</td>
+                				<td><input name="num" placeholder="为了防止数据冗余, 一次最多生成10张"></td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="addcard"><i class="fa fa-plus-square-o"></i>生成</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="frame">
+                    <p class="title">兑换卡列表 <a class="cleardata" href="javascript:;">清除所有兑换卡</a></p>
+                    <div class="frmtable">
+                    <table class="w100 list">
+                        <tr>
+                            <th>卡号</th>
+                            <th>兑换卡类型</th>
+                            <th>金币数或者VIP天数</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        {data}
+                    </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

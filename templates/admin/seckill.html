@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+        .stit{
+            font-size:14px;
+            color:red;
+            font-weight: bold;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                	<p class="title">添加整点秒杀</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                			<tr>
+                				<td>秒杀时间</td>
+                				<td class="search">
+            						<select name="selecttime">
+            						    <option value="0">--请选择秒杀时间--</option>
+                                        <option value="7">7点</option>
+                                        <option value="13">13点</option>
+                                        <option value="17">17点</option>
+                                        <option value="20">20点</option>
+                                    </select>
+                                </td>
+                			</tr>
+                            <tr>
+                				<td>影片ID</td>
+                				<td>
+                				    <input name="vid" placeholder="" />
+                				    <p class="stit"></p>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>秒杀价格</td>
+                				<td><input name="pricediamond" placeholder="单位:钻石" /></td>
+                			</tr>
+                			<tr>
+                				<td>上架总量</td>
+                				<td><input name="num" placeholder="" /></td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td>
+                				    <a href="javascript:;" class="btn submit" rel="addseckill"><i class="fa fa-plus-square-o"></i>添加</a>
+                				</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('input[name=vid]').blur(function(){
+                $.ajax({
+            		type: "post",
+            		url: "/webajax.php?mod=getprice",
+            		dataType: 'html',
+            		data: "id="+$(this).val(),
+            		success: function(data){
+            		    $('.stit').text("原价:"+data+"钻石");
+                    },
+            		error: function() {
+                        
+                    },
+                    beforeSend: function() {
+                        $('.stit').text("原价查询中...");
+                    }
+               })
+            });
+        });
+    </script>
+</body>
+</html>

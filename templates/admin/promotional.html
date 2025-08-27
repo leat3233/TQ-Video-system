@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{G:TITLE}</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <script>
+        $(function(){
+            $("select[name=star1]").find("option[value='{star1}']").attr("selected",true);
+            $("select[name=star2]").find("option[value='{star2}']").attr("selected",true);
+            $("select[name=star3]").find("option[value='{star3}']").attr("selected",true);
+        });
+    </script>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+                <div class="frame">
+                	<p class="title">聚划算添加</p>
+                	<div class="frmtable_content">
+                		<table class="w100">
+                			<tr>
+                				<td>大标题</td>
+                				<td><p><input name="btit" value="{btit}" placeholder="不超过30个字符(10个字)" /></p></td>
+                			</tr>
+                            <tr>
+                				<td>描述</td>
+                				<td><p><input name="descs" value="{descs}" placeholder="不超过180个字符(60个字)" /></p></td>
+                			</tr>
+                			<tr>
+                				<td>打包影片封面</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="cover" value="{cover}">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>钻石价格</td>
+                				<td><input name="diamond" value="{diamond}" placeholder="单位:钻石" /></td>
+                			</tr>
+                			<tr>
+                				<td>标签</td>
+                				<td><input name="stit" value="{stit}" placeholder="最多7个字" /></td>
+                			</tr>
+                		    <tr>
+                				<td>热度</td>
+                				<td><input name="hot" value="{hot}" placeholder="单位:钻石" /></td>
+                			</tr>
+                			<tr>
+                				<td>影片ID列表</td>
+                				<td><input name="vidlist" value="{vidlist}" placeholder="ID,ID,ID,ID" /></td>
+                			</tr>
+                			<tr>
+                				<td>推荐指数</td>
+                				<td class="search">
+                				    <select name="star1">
+                                        <option value="4">4星</option>
+                                        <option value="5" selected="">5星</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>购买指数</td>
+                				<td class="search">
+                				    <select name="star2">
+                                        <option value="4">4星</option>
+                                        <option value="5" selected="">5星</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>观看指数</td>
+                				<td class="search">
+                				    <select name="star3">
+                                        <option value="4">4星</option>
+                                        <option value="5" selected="">5星</option>
+                                    </select>
+                				</td>
+                			</tr>
+                			<input type="hidden" name="id" value="{CW('get/id')}" />
+                			<tr>
+                				<td></td>
+                				<td>{button}</td>
+                			</tr>
+                		</table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

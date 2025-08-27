@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>七牛云设置</title>
+    <link rel="stylesheet" href="{G:CSS}/backstage.css" />
+    <link rel="stylesheet" href="{G:CSS}/font-awesome.min.css" />
+    <script src="{G:JS}/jquery-1.8.3.min.js"></script>
+    <script src="{G:JS}/backstage.js"></script>
+    <style>
+        .frmtable_content td.r input{
+            margin-bottom:5px;width:10%
+        }
+    </style>
+</head>
+<body>
+    {template:model:admin:header}
+    {template:model:admin:aside}
+    <div class="wrap">
+        <div class="w100">
+            {template:model:admin:tag}
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">七牛云设置</p>
+                    <div class="notice">
+		                <div class="note-info">
+		                    <p class="p1 btn3">温馨提示</p>
+		                    <p class="pub">1. 开启七牛后, 所有视频图片将自动上传至七牛, 请注意参数配置正确.</p>
+		                    <p class="pub">2. <a class="alw" target="_blank" href="https://portal.qiniu.com/kodo/bucket">七牛-对象存储配置</a> <a target="_blank" class="aly" href="https://portal.qiniu.com/user/key">参数获取地址</a></p>
+		               </div>
+		            </div>
+                	<p class="title">七牛云-对象存储配置</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+                			<tr>
+                				<td>AccessKey</td>
+                				<td><input value="{accesskey}" name="accesskey" placeholder="AccessKey"></td>
+                			</tr>
+                			<tr>
+                				<td>SecretKey</td>
+                				<td><input value="{secretkey}" name="secretkey" placeholder="SecretKey"></td>
+                			</tr>
+                			<tr>
+                				<td>空间名称</td>
+                				<td><input value="{spacename}" name="spacename" placeholder="SpaceName"></td>
+                			</tr>
+                			<tr>
+                				<td>空间绑定域名</td>
+                				<td><input value="{url}" name="url" placeholder="url"></td>
+                			</tr>
+                			<tr>
+                				<td style="color:red;font-weight:bold">开启状态</td>
+                				<td class="rel">
+                					<input readonly="true" value="{ishow}" class="pub_select" name="ishow" placeholder="点击选择状态">
+                					<ul class="abs hide" style="display: none;">
+                					    <li>开启</li>
+                					    <li>关闭</li>
+                					</ul>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="updatesenven"><i class="fa fa-edit"></i>保存</a></td>
+                			</tr>
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

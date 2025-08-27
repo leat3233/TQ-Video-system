@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>设置</title>
+    <link rel="stylesheet" href="<?php echo CSS ?>/backstage.css" />
+    <link rel="stylesheet" href="<?php echo CSS ?>/font-awesome.min.css" />
+    <script src="<?php echo JS ?>/jquery-1.8.3.min.js"></script>
+    <script src="<?php echo JS ?>/backstage.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("select[name=greenhorn]").find("option[value='<?php echo $this->vars["greenhorn"] ?>']").attr("selected",true);
+            $("select[name=customer]").find("option[value='<?php echo $this->vars["customer"] ?>']").attr("selected",true);
+            $("select[name=onlyvip]").find("option[value='<?php echo $this->vars["onlyvip"] ?>']").attr("selected",true);
+            $("select[name=vipcomments]").find("option[value='<?php echo $this->vars["vipcomments"] ?>']").attr("selected",true);
+            $("select[name=scaletype]").find("option[value='<?php echo $this->vars["scaletype"] ?>']").attr("selected",true);
+            
+        });
+    </script>
+    <style>
+        .frmtable_content td.r input{
+            margin-bottom:5px;width:10%
+        }
+        td.r{
+            font-size:14px;
+            color:#888;
+        }
+    </style>
+</head>
+<body>
+    <?php file::import("system-model-admin-header"); ?>
+    <?php file::import("system-model-admin-aside"); ?>
+    <div class="wrap">
+        <div class="w100">
+            <?php file::import("system-model-admin-tag"); ?>
+            <div class="content">
+        		<div class="frame">
+                    <p class="title">系统设置</p>
+                    <div class="frmtable_content">
+                		<table class="w100">
+                			<tbody>
+            			    <!--<tr>-->
+                			<!--	<td>每日免费观影次数</td>-->
+                			<!--	<td><input value="<?php echo $this->vars["look"] ?>" name="look" placeholder="填写0代表可以无限观看"></td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>APP启动图</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="start1" value="<?php echo $this->vars["start1"] ?>">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>启动图点击跳转的链接</td>
+                				<td><input value="<?php echo $this->vars["start2"] ?>" name="start2" placeholder="启动图跳转链接"></td>
+                			</tr>
+                			
+                			<tr>
+                				<td>长视频每日免费次数</td>
+                				<td><input value="<?php echo $this->vars["changnum"] ?>" name="changnum" placeholder="填写数字"></td>
+                			</tr>
+                			<tr>
+                				<td>短视频每日免费次数</td>
+                				<td><input value="<?php echo $this->vars["duannum"] ?>" name="duannum" placeholder="填写数字"></td>
+                			</tr>
+                			<tr>
+                				<td>logo(尺寸170*45 png透明)用户首页logo显示和视频水印显示</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="logo" value="<?php echo $this->vars["logo"] ?>">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>最低提现金额</td>-->
+                			<!--	<td><input value="<?php echo $this->vars["withdrawals"] ?>" name="withdrawals" placeholder="单位:元 需输入整数,不含小数点"></td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>提现至少充值多少</td>-->
+                			<!--	<td><input value="<?php echo $this->vars["pay"] ?>" name="pay" placeholder="单位:元 需输入整数,不含小数点"></td>-->
+                			<!--</tr>-->
+                		
+                			<tr>
+                				<td>是否VIP用户才能发布</td>
+                				<td class="search">
+                				    <select name="onlyvip">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>是否VIP用户才能发布评论</td>-->
+                			<!--	<td class="search">-->
+                			<!--	    <select name="vipcomments">-->
+                   <!--                     <option value="1">是</option>-->
+                   <!--                     <option value="0">否</option>-->
+                   <!--                 </select>-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>不同级别用户反额比</td>-->
+                			<!--	<td class="r">-->
+                			<!--	    <input value="<?php echo $this->vars["r1"] ?>" name="r1" placeholder="代理反额比">-->
+                				    <!--<input value="<?php echo $this->vars["r2"] ?>" name="r2" placeholder="2级代理反额比">-->
+                				    <!--<input value="<?php echo $this->vars["r3"] ?>" name="r3" placeholder="3级代理反额比">-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>总业绩返利比(业绩范围/返利比)</td>-->
+                			<!--	<td class="r">-->
+                			<!--	    <input value="<?php echo $this->vars["p1"] ?>" name="p1" placeholder="开始金额">-->
+                			<!--	    <input value="<?php echo $this->vars["p2"] ?>" name="p2" placeholder="结束金额">-->
+                			<!--	    <input value="<?php echo $this->vars["f1"] ?>" name="f1" placeholder="返利比">-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>总业绩返利比(业绩范围/返利比)</td>-->
+                			<!--	<td class="r">-->
+                			<!--	    <input value="<?php echo $this->vars["p3"] ?>" name="p3" placeholder="开始金额">-->
+                			<!--	    <input value="<?php echo $this->vars["p4"] ?>" name="p4" placeholder="结束金额">-->
+                			<!--	    <input value="<?php echo $this->vars["f2"] ?>" name="f2" placeholder="返利比">-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<!--<tr>-->
+                			<!--	<td>总业绩返利比(业绩范围/返利比)</td>-->
+                			<!--	<td class="r">-->
+                			<!--	    <input value="<?php echo $this->vars["p5"] ?>" name="p5" placeholder="开始金额">-->
+                			<!--	    <input value="<?php echo $this->vars["f3"] ?>" name="f3" placeholder="返利比">-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>邀请送VIP</td>
+                				<td class="r">
+                				    邀请 <input value="<?php echo $this->vars["inviteuser1"] ?>" name="inviteuser1" placeholder="人数"> 人
+                				    送 <input value="<?php echo $this->vars["inviteday1"] ?>" name="inviteday1" placeholder="天数"> VIP
+                                </td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td class="r">
+                				    邀请 <input value="<?php echo $this->vars["inviteuser2"] ?>" name="inviteuser2" placeholder="人数"> 人
+                				    送 <input value="<?php echo $this->vars["inviteday2"] ?>" name="inviteday2" placeholder="天数"> VIP
+                                </td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td class="r">
+                				    邀请 <input value="<?php echo $this->vars["inviteuser3"] ?>" name="inviteuser3" placeholder="人数"> 人
+                				    送 <input value="<?php echo $this->vars["inviteday3"] ?>" name="inviteday3" placeholder="天数"> VIP
+                                </td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td class="r">
+                				    邀请 <input value="<?php echo $this->vars["inviteuser4"] ?>" name="inviteuser4" placeholder="人数"> 人
+                				    送 <input value="<?php echo $this->vars["inviteday4"] ?>" name="inviteday4" placeholder="天数"> VIP
+                                </td>
+                			</tr>
+                			
+                			<tr>
+                				<td>最新官网链接</td>
+                				<td><input value="<?php echo $this->vars["addb"] ?>" name="addb" placeholder=""></td>
+                			</tr>
+                			<!--<tr>-->
+                			<!--	<td>播放器播放模式</td>-->
+                			<!--	<td class="search">-->
+                			<!--	    <select name="scaletype">-->
+                   <!--                     <option value="自适应">自适应</option>-->
+                   <!--                     <option value="全屏">全屏</option>-->
+                   <!--                 </select>-->
+                   <!--             </td>-->
+                			<!--</tr>-->
+                			<tr>
+                				<td>APPlogo(200*200)</td>
+                				<td class="upload">
+                				    <form class="test" method="post" enctype="multipart/form-data">
+                                		<p>
+                                			<a class="rel btn btn3" href="javascript:;"><i class="fa fa-file-photo-o"></i><input name="file" type="file">选择</a>
+                                		</p><input placeholder="请选择图片" class="css" mode="upload" name="oo1" value="<?php echo $this->vars["oo1"] ?>">
+                                		<a class="btn btn1 upload" href="javascript:;"><i class="fa fa-cloud-upload"></i>上传</a>
+                            		</form>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td>Android下载链接</td>
+                				<td><input value="<?php echo $this->vars["oo2"] ?>" name="oo2" placeholder="可直接填写apk文件，也可以填写跳转的目的地链接"></td>
+                			</tr>
+                			<tr>
+                				<td>IOS下载链接</td>
+                				<td><input value="<?php echo $this->vars["oo3"] ?>" name="oo3" placeholder="可直接填写ipa文件，也可以填写跳转的目的地链接"></td>
+                			</tr>
+                		    <tr>
+                				<td>播放量/点赞量 （写法:  1000|2000  代表1000-2000之内随机生成
+                				<td class="row height-center" style="padding: 30px;">
+                			    <p style="font-size: 14px;color: red;font-weight: bold;">勾选激活该功能,不选则无效</p>
+                				    <input type="checkbox" name="open" style="width: 50px;box-shadow:initial;border:0" />
+                				    <input style="width:200px" value="<?php echo $this->vars["suiji"] ?>" name="suiji" placeholder="">
+                				</td>
+                			</tr>
+                		  
+                		   
+                		    <tr>
+                				<td>首页推荐话题ID <a style="color:red;font-weight:bold" target='_blank' href="<?php echo INDEX ?>/admin.php?mod=topiclist">查看话题ID</a></K></td>
+                				<td><input value="<?php echo $this->vars["banben"] ?>" name="banben" placeholder="填入分类ID,多个用英文逗号分隔"></td>
+                			</tr>
+                			
+                			
+                			
+                			<tr>
+                				<td>官方群组链接</td>
+                				<td><input value="<?php echo $this->vars["adda"] ?>" name="adda" placeholder=""></td>
+                			</tr>
+                		
+                			
+                			<tr>
+                				<td>客服链接</td>
+                				<td><input value="<?php echo $this->vars["kefu"] ?>" name="kefu" placeholder=""></td>
+                			</tr>
+                			
+                			
+                		    <tr>
+                				<td>网关链接</td>
+                				<td><input value="<?php echo $this->vars["mn1"] ?>" name="mn1" ></td>
+                			</tr>
+                			<tr>
+                				<td>商户ID</td>
+                				<td><input value="<?php echo $this->vars["mn2"] ?>" name="mn2" ></td>
+                			</tr>
+                			<tr>
+                				<td>商户密钥</td>
+                				<td><input value="<?php echo $this->vars["mn3"] ?>" name="mn3" ></td>
+                			</tr>
+                		
+                			
+                			<tr>
+                				<td></td>
+                				<td><a href="javascript:;" class="btn submit" rel="updatesys"><i class="fa fa-edit"></i>设置</a></td>
+                			</tr>
+                			
+                			
+                			
+                			
+                			
+                		</tbody></table>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .height-center {
+		align-items: center;
+	}
+
+	.width-center {
+		justify-content: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.between {
+		justify-content: space-between;
+	}
+	.frmtable_content select {
+    transition: box-shadow .4s ease-in-out;
+    color: #888;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #cccccc;
+    width: 20%;
+    padding: 10px 10px;
+    border-radius: 4px;
+}
+    </style>
+</body>
+</html>

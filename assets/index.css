@@ -1,0 +1,140 @@
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4)
+}
+
+.hover-container {
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    text-align: center;
+    right: 10%;
+}
+
+.logo {
+    width: 140px;
+}
+
+.title {
+    margin: 15% 0 0;
+    font-size: 60px;
+}
+
+.child-title {
+    width: 68%;
+    margin: 0 auto;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.desc {
+    font-size: 21px;
+    font-weight: 100;
+    width: 80%;
+    margin: 3% auto 6%;
+}
+
+.line-enter {
+    width: 32%;
+    display: inline-block;
+}
+
+.btn-enter {
+    width: 90%;
+    max-width: 330px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 36px;
+    padding: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-enter:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.enter p {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.bottom {
+    margin-top: 4%;
+}
+
+.bottom p {
+    font-weight: 100;
+    font-size: 13px;
+    margin: 0px;
+}
+
+@media(max-width:738px) {
+    video {
+        left: -100%;
+    }
+    .hover-container {
+        width: 90%;
+        right: 5%;
+    }
+    .title {
+        margin: 20% 0px 5px;
+        font-size: 32px;
+    }
+    .child-title {
+        width: 86%;
+        font-size: 12px;
+    }
+    .desc {
+        font-size: 17px;
+        font-weight: 100;
+        width: 83%;
+        margin: 6% auto 15%;
+    }
+    .line-enter {
+        width: 100%;
+        display: block;
+    }
+    .btn-enter {
+        padding: 6px;
+        font-size: 18px;
+    }
+    .btn-enter:hover {
+        background: rgba(255, 255, 255, 0.4);
+        color: #fff;
+    }
+    .enter p {
+        font-size: 12px;
+        font-weight: 100;
+    }
+    .bottom {
+        margin-top: 17%;
+    }
+    .bottom p {
+        font-size: 11px;
+    }
+    #gif_bg {
+        width: 100vw;
+        height: 100vh;
+    }
+    #gif_bg img {
+        height: 100%;
+        width: 110%;
+    }
+}
